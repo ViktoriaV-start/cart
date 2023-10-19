@@ -1,7 +1,9 @@
 import '@/styles/index.scss';
-import {Header} from "@/components/header";
+import {Header} from "@/components/Header";
+import {Cart} from "@/components/Cart";
 
 const header = new Header();
+const cart = new Cart();
 
-
-console.log(555);
+let retina = window.devicePixelRatio > 1;
+console.log(retina);

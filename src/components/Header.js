@@ -1,4 +1,4 @@
-import {HEADER_SELECTOR} from "@/config/constants";
+import { HEADER_SELECTOR } from "@/config/constants";
 
 
 
@@ -13,7 +13,7 @@ export class Header {
 
   _markUp() {
     return `
-      <div class="container header__wrap">
+      <header class="container header__wrap">
         <div class="header__icon-catalog"></div>
         <div class="header__logo">ТОВАРЫ И ТОЧКА</div>
         <div class="header__search">
@@ -28,7 +28,7 @@ export class Header {
           <div class="header__quantity">3</div>
         </div>
         
-      </div>
+      </header>
     
     `;
   }

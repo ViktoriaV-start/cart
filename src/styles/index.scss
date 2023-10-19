@@ -21,7 +21,8 @@ body {
 }
 
 @import "header";
-@import "main";
+@import "order";
+@import "cart";
 
 @media all and (max-width: 1399.9px) {
   .container {

@@ -1,0 +1,50 @@
+.cart {
+
+  &__heading {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-align: left;
+    margin-bottom: 1.77rem;
+  }
+
+
+}
+
+.checkbox__all {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.4px;
+}
+
+.checkbox__label {
+  display: flex;
+  align-items: center;
+}
+
+.cart__checkbox {
+  display: none;
+}
+
+.fake-chb {
+  width: 22px;
+  height: 22px;
+  background-image: url("../assets/icon_checkbox.svg");
+  position: relative;
+  //margin: 0 5px;
+}
+
+input:checked + .fake-chb::before {
+  content: '';
+  display: block;
+  width: 22px;
+  height: 22px;
+  background-image: url("../assets/icon_checkbox_ch.svg");
+  position: absolute;
+}
+
+.fake__all {
+  margin-right: 11px;
+}
+
+
