@@ -1,7 +1,11 @@
 @import "~normalize.css";
-@import url('https://fonts.cdnfonts.com/css/segoe-ui-4');
+//@import url('https://fonts.cdnfonts.com/css/segoe-ui-4');
+@import "seg_regular";
+@import "seg_semibold";
+@import "seg_bold";
 
 $special-color: #976cc3;
+$gray: #9797AF;
 
 * {
   box-sizing: border-box;
@@ -12,6 +16,7 @@ body {
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
   background-color: #6725A8;
+  color: #000000;
 }
 
 .container {
@@ -23,6 +28,15 @@ body {
 @import "header";
 @import "order";
 @import "cart";
+
+.invisible {
+  display: none;
+}
+
+.gray {
+  color: $gray;
+  font-weight: 400;
+}
 
 @media all and (max-width: 1399.9px) {
   .container {
