@@ -100,3 +100,4 @@ export const DELETE_ONE_CLASSNAME = 'cart__minus';
 export const DELETE_CLASSNAME = 'delete';
 export const DELETE_UNAVAILABLE_CLASSNAME = 'delete-unavailable';
 export const CHECKBOX_ALL_CLASSNAME = 'checkbox__all';
+export const DELIVERY_SELECTOR = '.delivery';

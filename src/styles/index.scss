@@ -6,6 +6,7 @@
 
 $special-color: #976cc3;
 $gray: #9797AF;
+$orange: #FF3B30;
 
 * {
   box-sizing: border-box;
@@ -19,6 +20,10 @@ body {
   color: #000000;
 }
 
+h1, h2, h3 {
+  margin: 0;
+}
+
 .container {
   width: 1400px;
   padding: 0 1.5rem 0 1.5rem;
@@ -28,6 +33,7 @@ body {
 @import "header";
 @import "order";
 @import "cart";
+@import "delivery";
 
 .invisible {
   display: none;
@@ -47,6 +53,6 @@ body {
 @media all and (max-width: 1023.9px) {
   .container {
     width: 100vw;
-    padding: 0 0.8rem 0 0.8rem;
+    padding: 0 0.9rem 0 0.9rem;
   }
 }

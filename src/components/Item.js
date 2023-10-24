@@ -67,16 +67,17 @@ export class Item {
           <input type="checkbox" class="cart__checkbox checkbox__input" checked>
           <div class="fake-chb fake__item"></div>
           <img class="cart__img" src="${this.productImg}" alt="Poduct">
+          <div class="checkbox__size ${this.productSize ? '' : 'invisible' }">${this.productSize ? this.productSize : '' }</div>
         </label>
 
-        <div>
+        <div class="cart__general">
           <div class="cart__description">
             <span>${this.productTitle}</span>
-            <span>${this.productManufacturer}</span>
+            <span class="cart__manufacturer">${this.productManufacturer}</span>
           </div>
           <div class="cart__product-info ${!this.productColor && !this.productSize ? 'invisible' : ''}">
             <span>${this.productColor ? 'Цвет: ' + this.productColor : '' }</span>
-            <span>${this.productSize ? 'Размер: ' + this.productSize : '' }</span>
+            <span class="cart__size">${this.productSize ? 'Размер: ' + this.productSize : '' }</span>
           </div>
           <div class="cart__stock ${!this.productInStock ? 'invisible' : ''}">${this.productStock}</div>
           <div class="cart__shop-wrap">
@@ -112,11 +113,17 @@ export class Item {
       
         <div class="cart__sum">
           <div>
-            <span class="total ${(this.totalPrice > 10000) ? 'cart__total_sm' : 'cart__total'}">${this._getPriceString(this.totalPrice)}</span><span class="cart__total_sm">сом</span>
+            <span class="total ${(this.totalPrice > 10000) ? 'cart__total_sm' : 'cart__total'}">${this._getPriceString(this.totalPrice)}</span><span class="cart__total_sm cart__total-text">сом</span>
           </div>
-          <span class="cart__full">${this._getPriceString(this.fullTotalPrice)} сом</span>
+          <span class="cart__full ${(this.fullTotalPrice > 1000000) ? 'cart__full_sm' : ''}">${this._getPriceString(this.fullTotalPrice)} сом</span>
         </div>
       </div>
+      
+      
+      
+      
+      
+
     `;
   }
 
@@ -124,7 +131,12 @@ export class Item {
     this.rendered = true;
     return `
       <div class="cart__product-unavailable product" data-id="${this.productId}">
-             <img class="cart__img_gray" src="${this.productImg}" alt="Poduct">
+        <div class="cart__unavailable-img">
+          <img class="cart__img_gray" src="${this.productImg}" alt="Poduct">
+          <div class="checkbox__size ${this.productSize ? '' : 'invisible' }">${this.productSize ? this.productSize : '' }</div>
+          <div class="checkbox__size-sp ${this.productId === 6 ? '' : 'invisible' }">56/54/52/50/48/46</div>
+        </div>
+             
         <div>
           <div class="cart__description_wider gray">
             <span>${this.productTitle}</span>
@@ -132,7 +144,7 @@ export class Item {
         </div>
         <div class="cart__product-info gray ${!this.productColor && !this.productSize ? 'invisible' : ''}">
           <span>${this.productColor ? 'Цвет: ' + this.productColor : '' }</span>
-          <span>${this.productSize ? 'Размер: ' + this.productSize : '' }</span>
+          <span class="cart__size">${this.productSize ? 'Размер: ' + this.productSize : '' }</span>
         </div>
       </div>
       

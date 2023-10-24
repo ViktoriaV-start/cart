@@ -2,7 +2,6 @@ import {
   ADD_CLASSNAME,
   CART_AVAILABLE_SELECTOR,
   CART_UNAVAILABLE_SELECTOR,
-  CHECKBOX_ALL_CLASSNAME,
   DELETE_CLASSNAME,
   DELETE_ONE_CLASSNAME,
   DELETE_UNAVAILABLE_CLASSNAME,
@@ -10,7 +9,8 @@ import {
   PRODUCT_SELECTOR,
   ORDER, ICON_FAVORITE_SELECTOR
 } from "@/config/constants";
-import {Item} from "@/components/Item";
+import { Item } from "@/components/Item";
+import { Client } from "@/components/Client";
 
 export class Cart {
 
@@ -23,6 +23,9 @@ export class Cart {
     this.handleData(ORDER.unavailable, this.unavailableProducts, 'ItemUnavailable');
     this._render();
     this._init();
+
+    this.client = new Client(ORDER.client);
+
   }
 
   _countUnavailable() {
@@ -70,11 +73,15 @@ export class Cart {
         <div class="cart__available"></div>
         
         <div class="cart__unavailable-wrap">
+        <div class="cart__unheading-wrap">
           <div class="cart__unavailable-heading">
             <span>Отсутствуют</span>
             <div class="point"></div>
             <span>${this._countUnavailable()} товара</span>
           </div>
+          <div class="arrow"></div>
+          </div>
+         
           <div class="cart__unavailable"></div>
         </div>
 
