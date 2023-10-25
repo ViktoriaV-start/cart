@@ -1,0 +1,13 @@
+.footer {
+  padding-bottom: 1.4rem;
+
+
+
+  &__wrap {
+    display: flex;
+    justify-content: center;
+    color: $white;
+    column-gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+}

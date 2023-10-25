@@ -1,29 +1,21 @@
 import {ORDER_SELECTOR} from "@/config/constants";
-import {Delivery} from "@/components/Delivery";
+import { Delivery } from "@/components/Delivery";
+import { Payment } from "@/components/Payment";
+import {Customer} from "@/components/Customer";
 
 
 export class Client {
   orderContainer = document.querySelector(ORDER_SELECTOR);
 
 
-  constructor(client) {
-    this.name = client.name;
-    this.surname =  client.surname;
-    this.phone = client.phone;
-    this.email = client.email;
-    this.inn = client.inn;
-    this.creditCard = client.creditCard;
-    this.address = client.address;
-
+  constructor(clientData) {
     this._render();
 
     this.delivery = new Delivery();
+    this.payment = new Payment(clientData.creditCard);
+    this.customer = new Customer(clientData)
 
 
-  }
-
-  x() {
-    this.address = 'xxx';
   }
 
   _render() {
@@ -35,7 +27,7 @@ export class Client {
       return `
         <section class="delivery"><div class="delivery__bg"></div> </section>
         <section class="payment"></section>
-        <section class="client"></section>
+        <section class="customer"></section>
       `;
   }
 

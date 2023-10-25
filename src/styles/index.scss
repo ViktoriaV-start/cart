@@ -7,6 +7,9 @@
 $special-color: #976cc3;
 $gray: #9797AF;
 $orange: #FF3B30;
+$orange-lt: #F55123;
+$white: #ffffff;
+$main: #000000;
 
 * {
   box-sizing: border-box;
@@ -34,9 +37,16 @@ h1, h2, h3 {
 @import "order";
 @import "cart";
 @import "delivery";
+@import "payment";
+@import "customer";
+@import "footer";
 
 .invisible {
   display: none;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .gray {

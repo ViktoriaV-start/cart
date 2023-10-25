@@ -1,0 +1,59 @@
+
+.payment {
+  width: 55.7rem;
+  background-color: $white;
+  border-radius: 1rem;
+  padding: 1.2rem 1.5rem 1.6rem;
+  margin-top: 1rem;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  &__edit {
+    align-self: flex-end;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  &__main {
+    display: flex;
+    margin-top: 1.1rem;
+    align-items: center;
+    column-gap: 7px;
+  }
+
+  &__logo {
+    width: 2rem;
+    height: 1.5rem;
+    border-radius: 4px;
+    background-image: url("../assets/icon_pay.svg");
+  }
+
+  //&__card, &__expiry, &__logo {
+  //  margin-right: 7px;
+  //}
+
+  &__expiry {
+    padding-left: 6px;
+  }
+
+  &__footer {
+    display: flex;
+    margin-top: 0.6rem;
+  }
+
+  &__text {
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+}

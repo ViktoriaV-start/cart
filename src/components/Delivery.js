@@ -1,4 +1,4 @@
-import {DELIVERY_SELECTOR, ORDER_SELECTOR} from "@/config/constants";
+import { DELIVERY_SELECTOR } from "@/config/constants";
 
 
 export class Delivery {
@@ -56,8 +56,7 @@ export class Delivery {
       
       <footer class="delivery__footer">
         <div class="delivery__confirm"></div>
-        <span class="delivery__price">Обратная доставка товаров на склад при отказе —</span>
-        <span class="delivery__price_cl">бесплатно</span>
+        <span class="delivery__price">Обратная доставка товаров на склад при отказе —</span><span class="delivery__price_cl">бесплатно</span>
       </footer>
     `;
   }

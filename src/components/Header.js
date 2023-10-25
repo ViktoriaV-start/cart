@@ -1,7 +1,5 @@
 import { HEADER_SELECTOR } from "@/config/constants";
 
-
-
 export class Header {
 
   headerContainer = document.querySelector(HEADER_SELECTOR);
@@ -13,7 +11,7 @@ export class Header {
 
   _markUp() {
     return `
-      <header class="container header__wrap">
+      <div class="container header__wrap">
         <div class="header__icon-catalog"></div>
         <div class="header__logo">ТОВАРЫ И ТОЧКА</div>
         <div class="header__search">
@@ -28,7 +26,7 @@ export class Header {
           <div class="header__quantity">3</div>
         </div>
         
-      </header>
+      </div>
     
     `;
   }

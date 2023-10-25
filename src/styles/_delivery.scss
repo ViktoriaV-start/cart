@@ -1,13 +1,10 @@
 
 .delivery {
   width: 55.7rem;
-  background-color: #ffffff;
+  background-color: $white;
   border-radius: 1rem;
-  padding: 1.2rem 1.5rem 1.5rem;
-  margin-top: 34px;
-  //height: 362px;
-  //TODO -check height
-
+  padding: 1.2rem 1.5rem 1.4rem;
+  margin-top: 2.1rem;
 
   &__header {
     display: flex;
@@ -124,9 +121,10 @@
   }
 
   &__price, &__price_cl {
-    font-size: 13px;
+    font-size: 0.8rem;
     font-weight: 400;
     line-height: 1.5;
+    letter-spacing: 0.1px;
   }
 
   &__price {
@@ -166,7 +164,7 @@
     width: 90.5vw;
     position: relative;
     z-index: 10;
-    padding: 1.1rem 0 1.5rem 0;
+    padding: 1.2rem 0 1.5rem 0;
 
     &__bg {
       background-color: #ffffff;
@@ -209,7 +207,7 @@
     }
 
     &__free {
-      margin-top: 7px;
+      margin-top: 6px;
     }
 
     &__dates {
@@ -224,14 +222,41 @@
     }
 
     &__title_dt:first-child {
-      padding-top: 0;
+      padding-top: 5px;
     }
-    //
-    //&__title {
-    //  padding-top: 5px;
-    //}
+
+    &__title_dt:not(:first-child) {
+      padding-top: 11px;
+    }
+
+    &__footer {
+      display: inline-block;
+      padding-left: 2.5rem;
+      padding-right: 0.6rem;
+      position: relative;
+    }
+
+    &__confirm {
+      position: absolute;
+      top: 7px;
+      left: 10px;
+    }
+
+    &__price {
+      line-height: 1;
+      margin-left: 0;
+    }
+
+    &__price_cl {
+      margin-left: 0;
+    }
 
 
+
+  }
+
+  .checkbox__size-sp {
+    display: block;
   }
 
 }

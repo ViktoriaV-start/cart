@@ -17,11 +17,12 @@ export class Item {
     this.productInStock      = product.inStock;
     this.productPrice        = product.price;
     this.productDiscount     = product.discount;
-    //this.productCurrentPrice = product.price - product.discount;
     this.productQuantity     = product.quantity ?? 0;
     this.totalPrice          = this.getTotalPrice();
     this.fullTotalPrice      = this.getFullTotalPrice();
     this.productImg          = RETINA ? '../img_retina/prod' + product.id + '.jpg' : '../img/prod' + product.id + '.jpg';
+
+    this.confirmed           = true;
   }
 
   getTotalPrice() {
