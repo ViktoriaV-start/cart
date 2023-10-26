@@ -28,9 +28,9 @@ export class Client {
 
   _markUp() {
       return `
-        <section class="delivery"><div class="delivery__bg"></div> </section>
-        <section class="payment"></section>
-        <section class="customer"></section>
+        <section class="delivery"><div class="delivery__bg"></div></section>
+        <section class="payment"><div class="payment__bg"></div></section>
+        <section class="customer"><div class="customer__bg"></section>
       `;
   }
 

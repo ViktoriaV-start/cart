@@ -65,9 +65,15 @@ export class Cart {
           <label class="checkbox__label checkbox__all">
             <input type="checkbox" class="cart__checkbox checkbox__input-all" checked>
             <div class="fake-chb fake__all"></div>
-             Выбрать все
+            <span class="checkbox__text">Выбрать все</span>
           </label>
-          <div class="arrow"></div>
+<!--          <span class="cart__briefly invisible">266 товаров</span>-->
+          <div class="cart__briefly invisible">
+            <span>266 товаров</span>
+            <div class="point"></div>
+            <span>2 100 269 сом</span>
+          </div>
+          <div class="arrow__available arrow__top"></div>
         </div>
         
         <div class="cart__available"></div>
@@ -79,7 +85,7 @@ export class Cart {
             <div class="point"></div>
             <span>${this._countUnavailable()} товара</span>
           </div>
-          <div class="arrow"></div>
+          <div class="arrow__unavailable arrow__top"></div>
           </div>
          
           <div class="cart__unavailable"></div>
@@ -125,6 +131,28 @@ export class Cart {
     this.removeMarkUp(item.productId);
   }
 
+  // Скрыть или отобразить в разделе доставки даты доставки в зависимости от наличия выбранных товаров
+  _handleDatesVisibility() {
+    let deliveryContainers = document.querySelectorAll('.delivery__images');
+
+    deliveryContainers.forEach(elem => {
+      let elements = elem.querySelectorAll('.dlv');
+      let visibility = [];
+      elements.forEach(el => {
+
+        if (!el.classList.contains('invisible')) {
+          visibility.push(true);
+        }
+
+        if (visibility.length === 0) {
+          elem.previousElementSibling.classList.add('invisible');
+        } else {
+          elem.previousElementSibling.classList.remove('invisible');
+        }
+      })
+    });
+  }
+
   removeMarkUp(id) {
 //удалить разметку товара со страницы
     document.querySelector(`${PRODUCT_SELECTOR}[data-id="${id}"]`).remove();
@@ -132,6 +160,24 @@ export class Cart {
 
   _init() {
     this.orderContainer.addEventListener('click', e => {
+
+      if (e.target.classList.contains('arrow__available')) {
+        const arrow = this.orderContainer.querySelector('.arrow__available');
+
+        this.orderContainer.querySelector(CART_AVAILABLE_SELECTOR).classList.toggle('invisible');
+        this.orderContainer.querySelector('.cart__briefly').classList.toggle('invisible');
+        this.orderContainer.querySelector('.fake__all').classList.toggle('invisible');
+        this.orderContainer.querySelector('.checkbox__text').classList.toggle('invisible');
+        arrow.classList.toggle('arrow__top');
+        arrow.classList.toggle('arrow__down');
+      }
+
+      if (e.target.classList.contains('arrow__unavailable')) {
+
+        this.orderContainer.querySelector(CART_UNAVAILABLE_SELECTOR).classList.toggle('invisible');
+        e.target.classList.toggle('arrow__top');
+        e.target.classList.toggle('arrow__down');
+      }
 
       // Увеличить количество товара в корзине
       if (e.target.classList.contains(ADD_CLASSNAME)) {
@@ -176,27 +222,32 @@ export class Cart {
       }
 
 //---------------
-      // СЛУШАТЕЛЬ СОБЫТИЯ НА ОБЩЕМ ЧЕКБОКСЕ - переключает отображение товаров в разделе доставки
+
       if (e.target.classList.contains(ICON_FAVORITE_SELECTOR)) {
         e.target.classList.toggle('cart__favorite_colored');
       }
 
+      // СЛУШАТЕЛЬ СОБЫТИЯ НА ОБЩЕМ ЧЕКБОКСЕ - переключает отображение товаров в разделе доставки
       if (e.target.classList.contains('checkbox__input-all')) {
-        let deliveryDatesContainer = document.querySelector('.delivery__dates');
-
+        //let deliveryDatesContainer = document.querySelector('.delivery__dates');
+        let elements = document.querySelectorAll(`.dlv`);
         let checkboxes = document.getElementsByClassName('checkbox__input');
+
         if (document.querySelector('.checkbox__input-all').checked) {
           for (let i = 0; i < checkboxes.length; i++) {
             checkboxes[i].checked = true;
           }
 
-          deliveryDatesContainer.classList.remove('invisible');
+          //deliveryDatesContainer.classList.remove('invisible');
+          elements.forEach(elem => elem.classList.remove('invisible'));
         } else {
           for (let i = 0; i < checkboxes.length; i++) {
             checkboxes[i].checked = false;
           }
-          deliveryDatesContainer.classList.add('invisible');
+          //deliveryDatesContainer.classList.add('invisible');
+          elements.forEach(elem => elem.classList.add('invisible'));
         }
+        this._handleDatesVisibility();
       }
 
       // СЛУШАТЕЛЬ СОБЫТИЯ НА ОТДЕЛЬНОМ ЧЕКБОКСЕ - переключает отображение отдельного товара в разделе доставки
@@ -207,30 +258,12 @@ export class Cart {
         if (!e.target.checked) {
           document.querySelector('.checkbox__input-all').checked = false;
           elements.forEach(elem => elem.classList.add('invisible'));
+
         } else {
-          document.querySelector('.checkbox__input-all').checked = true;
           elements.forEach(elem => elem.classList.remove('invisible'));
         }
 
-        let deliveryContainers = document.querySelectorAll('.delivery__images');
-
-        deliveryContainers.forEach(elem => {
-          elements = elem.querySelectorAll('.dlv');
-          let visibility = [];
-          elements.forEach(el => {
-
-            if (!el.classList.contains('invisible')) {
-              visibility.push(true);
-            }
-
-            if (visibility.length === 0) {
-              elem.previousElementSibling.classList.add('invisible');
-            } else {
-              elem.previousElementSibling.classList.remove('invisible');
-            }
-          })
-
-        });
+        this._handleDatesVisibility();
       }
     });
   }

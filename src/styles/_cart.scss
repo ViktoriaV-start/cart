@@ -16,6 +16,11 @@
   &__control {
     display: flex;
     justify-content: space-between;
+    position: relative;
+  }
+
+  &__briefly {
+    position: absolute;
   }
 
   &__available {
@@ -213,7 +218,7 @@
     padding-top: 8px;
   }
 
-  &__unavailable-heading {
+  &__unavailable-heading, &__briefly {
     font-size: 1rem;
     font-weight: 600;
     display: flex;
@@ -279,11 +284,18 @@
   top: 37.6px;
 }
 
-.arrow {
+.arrow__top, .arrow__top {
   height: 20px;
   width: 20px;
   background-image: url("../assets/icon_arrow-top.svg");
 }
+
+.arrow__down, .arrow__down {
+  height: 20px;
+  width: 20px;
+  background-image: url("../assets/icon_arrow_down.svg");
+}
+
 
 .point {
   width: 3px;

@@ -79,7 +79,68 @@
     color: $main;
   }
 
+}
 
+@media all and (max-width: 1399.9px) {
+  .customer {
+    width: 39.9rem;
 
+    &__name {
+      width: 17.6rem;
+    }
 
+    &__fio {
+      column-gap: 1.5rem;
+    }
+
+    &__mail, &__phone, &__inn {
+      width: 11.4rem;
+    }
+  }
+}
+
+@media all and (max-width: 1023.9px) {
+  .customer {
+    width: 90.5vw;
+    position: relative;
+    z-index: 10;
+    padding: 1.1rem 0 1.6rem;
+    margin-top: 0.8rem;
+
+    &__bg {
+      background-color: #ffffff;
+      position: absolute;
+      width: 100vw;
+      left: -0.9rem;
+      border-radius: 1rem;
+      z-index: -5;
+      top: 0;
+      bottom: 0;
+    }
+
+    &__h2 {
+      font-size: 1.25rem;
+      letter-spacing: -0.1px;
+    }
+
+    &__name {
+      width: 100%;
+    }
+
+    &__fio {
+      flex-direction: column;
+      row-gap: 0.5rem;
+      margin-top: 0.2rem;
+    }
+
+    &__contact {
+      flex-direction: column;
+      row-gap: 0.5rem;
+      margin-top: 0.6rem;
+    }
+
+    &__mail, &__phone, &__inn {
+      width: 100%;
+    }
+  }
 }

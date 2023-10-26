@@ -104,3 +104,4 @@ export const CHECKBOX_ALL_CLASSNAME = 'checkbox__all';
 export const DELIVERY_SELECTOR = '.delivery';
 export const PAYMENT_SELECTOR = '.payment';
 export const CUSTOMER_SELECTOR = '.customer';
+

@@ -8,11 +8,19 @@ export class Customer {
   constructor(client) {
     this.customer = client;
     this._render();
+
   }
 
   _render() {
     this.customerContainer.insertAdjacentHTML('afterbegin', this._markUp());
 
+  }
+
+  _getMailText() {
+    if (window. innerWidth <= 1023.9) {
+      return 'Электронная почта';
+    }
+    return 'Почта';
   }
 
   _markUp() {
@@ -41,8 +49,8 @@ export class Customer {
             
               <div class="customer__contact">
             <div>
-              <div class="customer__title hidden">Почта</div>
-              <input class="customer__mail" maxlength="45" placeholder="Почта">
+              <div class="customer__title hidden">${this._getMailText()}</div>
+              <input class="customer__mail" maxlength="45" placeholder="${this._getMailText()}">
               <div class="customer__error hidden">Укажите почту</div>
             </div>
             <div>
