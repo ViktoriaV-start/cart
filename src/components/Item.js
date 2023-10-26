@@ -53,6 +53,17 @@ export class Item {
     container.querySelector(QUANTITY_SELECTOR).textContent = `${this.productQuantity}`;
     container.querySelector(TOTAL_SELECTOR).textContent = `${this.totalPrice}`;
     container.querySelector(FULL_TOTAL_SELECTOR).textContent = `${this.fullTotalPrice}`;
+    if(this.productQuantity === 1) {
+      container.querySelector('.cart__minus').classList.add('lt-gray');
+    } else {
+      container.querySelector('.cart__minus').classList.remove('lt-gray');
+    }
+
+    if(this.productQuantity === this.productInStock) {
+      container.querySelector('.cart__plus').classList.add('lt-gray');
+    } else {
+      container.querySelector('.cart__plus').classList.remove('lt-gray');
+    }
   }
 
 
@@ -65,7 +76,12 @@ export class Item {
     return `
       <div class="cart__product product" data-id="${this.productId}">
         <label class="checkbox__label checkbox__product">
-          <input type="checkbox" class="cart__checkbox checkbox__input" checked>
+          <input type="checkbox"
+                 class="cart__checkbox
+                 checkbox__input"
+                 data-id="${this.productId}"
+                 checked
+          >
           <div class="fake-chb fake__item"></div>
           <img class="cart__img" src="${this.productImg}" alt="Poduct">
           <div class="checkbox__size ${this.productSize ? '' : 'invisible' }">${this.productSize ? this.productSize : '' }</div>
@@ -93,9 +109,15 @@ export class Item {
       
         <div class="cart__quantity-info">
           <div class="cart__quantity">
-            <div class="cart__minus" data-id="${this.productId}">-</div>
+            <div class="cart__minus
+                        ${this.productQuantity === 1 ? 'lt-gray' : ''}"
+                 data-id="${this.productId}">
+                 -
+            </div>
             <span class="cart__num">${this.productQuantity}</span>
-            <div class="cart__plus" data-id="${this.productId}">+</div>
+            <div class="cart__plus
+                        ${this.productQuantity === this.productInStock ? 'lt-gray' : ''}"
+                 data-id="${this.productId}">+</div>
           </div>
           <div class="cart__remainder ${this.productInStock > 15 ? 'invisible' : ''}">Осталось ${this.productInStock} шт.</div>
           <div class="cart__quantity-ic">

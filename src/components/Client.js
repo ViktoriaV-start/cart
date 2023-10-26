@@ -8,12 +8,15 @@ export class Client {
   orderContainer = document.querySelector(ORDER_SELECTOR);
 
 
-  constructor(clientData) {
+  constructor(clientData, availableProducts, unavailableProducts) {
+    this.availableProducts = availableProducts;
+    this.unavailableProducts = unavailableProducts;
     this._render();
 
-    this.delivery = new Delivery();
+
+    this.delivery = new Delivery(this.availableProducts, this.unavailableProducts);
     this.payment = new Payment(clientData.creditCard);
-    this.customer = new Customer(clientData)
+    this.customer = new Customer(clientData);
 
 
   }
