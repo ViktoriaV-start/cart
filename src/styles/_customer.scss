@@ -79,6 +79,30 @@
     color: $main;
   }
 
+  &__name-wrap:focus-within &__title {
+    visibility: visible;
+  }
+
+  //&__name-wrap:hover &__title {
+  //  visibility: visible;
+  //}
+
+  &__surname-wrap:focus-within &__title {
+    visibility: visible;
+  }
+
+  &__mail-wrap:focus-within &__title {
+    visibility: visible;
+  }
+
+  &__phone-wrap:focus-within &__title {
+    visibility: visible;
+  }
+
+  &__inn-wrap:focus-within &__title {
+    visibility: visible;
+  }
+
 }
 
 @media all and (max-width: 1399.9px) {

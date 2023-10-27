@@ -19,8 +19,8 @@ export class Cart {
   orderContainer = document.querySelector(ORDER_SELECTOR);
 
   constructor() {
-    this.handleData(ORDER.available, this.availableProducts, 'ItemAvailable');
-    this.handleData(ORDER.unavailable, this.unavailableProducts, 'ItemUnavailable');
+    this.handleData(ORDER.available, this.availableProducts);
+    this.handleData(ORDER.unavailable, this.unavailableProducts);
     this._render();
     this._init();
 
@@ -51,6 +51,8 @@ export class Cart {
     }
   }
 
+  // Создать экземпляр класса Item для каждого товара в заказе
+  // Заполнить указанную корзину (this.availableProducts/this.unavailableProducts) товарами
   handleData(data, arr) {
     for (let item of data) {
       arr.push(new Item(item));
@@ -67,13 +69,18 @@ export class Cart {
             <div class="fake-chb fake__all"></div>
             <span class="checkbox__text">Выбрать все</span>
           </label>
-<!--          <span class="cart__briefly invisible">266 товаров</span>-->
+
           <div class="cart__briefly invisible">
             <span>266 товаров</span>
             <div class="point"></div>
             <span>2 100 269 сом</span>
           </div>
-          <div class="arrow__available arrow__top"></div>
+          
+          <label class="arrow__available">
+            <input type="checkbox" class="cart__arrow-available">
+            <div class="fake-arrow"></div>
+          </label>
+<!--          <div class="arrow__available arrow__top"></div>-->
         </div>
         
         <div class="cart__available"></div>
@@ -85,47 +92,49 @@ export class Cart {
             <div class="point"></div>
             <span>${this._countUnavailable()} товара</span>
           </div>
-          <div class="arrow__unavailable arrow__top"></div>
+          
+          <label class="arrow__unavailable">
+            <input type="checkbox" class="cart__arrow-unavailable">
+            <div class="fake-arrow"></div>
+          </label>
+<!--          <div class="arrow__unavailable arrow__top"></div>-->
           </div>
          
           <div class="cart__unavailable"></div>
         </div>
-
-        
-        
-
-
-
-
-      
       </section>
-      
-
     `;
   }
 
+  // Получить товар из this.availableProducts по ID
   getItem(id) {
     return this.availableProducts.find(el => el.productId === id);
   }
 
+  // Получить товар из this.unavailableProducts по ID
   getItemUnavailable(id) {
     return this.unavailableProducts.find(el => el.productId === id);
   }
 
+
+  // Если товар в корзине = 1 штука - удалить из корзины доступных товаров и удалить разметку товара
+  // Если товара в корзине больше 1-го - уменьшить количество на 1 в доступных товарах
   deleteItem(item) {
     if (item.productQuantity > 1) {
       item.changeQuantity(-1);
       return;
     }
-    this.availableProducts.splice(this.availableProducts.indexOf(item), 1); //удалить сам товар из списка доступных товаров
+    this.availableProducts.splice(this.availableProducts.indexOf(item), 1);
     this.removeMarkUp(item.productId);
   }
 
+  // Удалить товар из корзины доступных товаров и удалить разметку товара
   deleteAll(item) {
-    this.availableProducts.splice(this.availableProducts.indexOf(item), 1); //удалить сам товар из списка доступных товаров
+    this.availableProducts.splice(this.availableProducts.indexOf(item), 1);
     this.removeMarkUp(item.productId);
   }
 
+  // Удалить товар из корзины недоступных товаров и удалить разметку товара
   deleteUnavailable(item) {
     this.unavailableProducts.splice(this.unavailableProducts.indexOf(item), 1);
     this.removeMarkUp(item.productId);
@@ -153,35 +162,30 @@ export class Cart {
     });
   }
 
+  //удалить разметку товара со страницы
   removeMarkUp(id) {
-//удалить разметку товара со страницы
     document.querySelector(`${PRODUCT_SELECTOR}[data-id="${id}"]`).remove();
   }
 
+  // Установить слушателей событий и определить действия
   _init() {
     this.orderContainer.addEventListener('click', e => {
 
-      if (e.target.classList.contains('arrow__available')) {
-        const arrow = this.orderContainer.querySelector('.arrow__available');
-
+      // Открытие/скрытие корзины доступных товаров
+      if (e.target.classList.contains('cart__arrow-available')) {
         this.orderContainer.querySelector(CART_AVAILABLE_SELECTOR).classList.toggle('invisible');
         this.orderContainer.querySelector('.cart__briefly').classList.toggle('invisible');
         this.orderContainer.querySelector('.fake__all').classList.toggle('invisible');
         this.orderContainer.querySelector('.checkbox__text').classList.toggle('invisible');
-        arrow.classList.toggle('arrow__top');
-        arrow.classList.toggle('arrow__down');
       }
 
-      if (e.target.classList.contains('arrow__unavailable')) {
-
+      // Открытие/скрытие корзины недоступных товаров
+      if (e.target.classList.contains('cart__arrow-unavailable')) {
         this.orderContainer.querySelector(CART_UNAVAILABLE_SELECTOR).classList.toggle('invisible');
-        e.target.classList.toggle('arrow__top');
-        e.target.classList.toggle('arrow__down');
       }
 
       // Увеличить количество товара в корзине
       if (e.target.classList.contains(ADD_CLASSNAME)) {
-
 
         const id = +e.target.dataset['id'];
         let item = this.getItem(id);
@@ -190,7 +194,6 @@ export class Cart {
           item.changeQuantity(1);
           // this.updateCart();
         }
-
       }
 
       // Уменьшить количество товара в корзине
