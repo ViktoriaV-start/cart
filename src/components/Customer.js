@@ -36,12 +36,12 @@ export class Customer {
           <div class="customer__fio">
             <div class="customer__name-wrap">
               <div class="customer__title hidden">Имя</div>
-              <input class="customer__name fio" maxlength="45" placeholder="Имя">
+              <input class="customer__name fio" maxlength="45" placeholder="Имя" name="name">
               <div class="customer__error hidden">Укажите имя</div>
             </div>
             <div class="customer__surname-wrap">
               <div class="customer__title hidden">Фамилия</div>
-              <input class="customer__name fio" maxlength="45" placeholder="Фамилия">
+              <input class="customer__name fio" maxlength="45" placeholder="Фамилия" name="surname">
               <div class="customer__error hidden">Укажите фамилию</div>
             </div>
           </div>
@@ -51,18 +51,19 @@ export class Customer {
               <div class="customer__contact">
             <div class="customer__mail-wrap">
               <div class="customer__title hidden">${this._getMailText()}</div>
-              <input class="customer__mail" maxlength="45" placeholder="${this._getMailText()}">
+              <input class="customer__mail" maxlength="45" placeholder="${this._getMailText()}" name="mail">
               <div class="customer__error hidden">Укажите почту</div>
             </div>
             <div class="customer__phone-wrap">
               <div class="customer__title">Телефон</div>
-              <input class="customer__phone" readonly placeholder="${this.customer.phone}">
+              <input class="customer__phone" readonly placeholder="${this.customer.phone}" name="phone">
               <div class="customer__error hidden">Укажите телефон</div>
             </div>
             <div class="customer__inn-wrap">
               <div class="customer__title hidden">ИНН</div>
-              <input class="customer__inn" maxlength="45" placeholder="ИНН">
+              <input class="customer__inn" maxlength="45" placeholder="ИНН" name="surname">
               <div class="customer__info">Для таможенного оформления</div>
+              <div class="customer__error invisible">Укажите ИНН</div>
             </div>
             
           </div>
@@ -71,18 +72,57 @@ export class Customer {
     `;
   }
 
+  _checkContent(e, value, regexp) {
+    if (!regexp.test(value)) {
+      e.target.parentNode.querySelector('.customer__error').classList.remove('hidden');
+    } else {
+      e.target.parentNode.querySelector('.customer__error').classList.add('hidden');
+    }
+  }
+
   _init() {
 
     this.customerContainer.addEventListener('change', e => {
 
-      let content = e.target.value.trim();
-      let regexp = /[а-яА-ЯЁё]/ig;
-      if (!regexp.test(content)) {
-        e.target.parentNode.querySelector('.customer__error').classList.remove('hidden');
-      } else {
-        e.target.parentNode.querySelector('.customer__error').classList.add('hidden');
+
+
+      if (e.target.classList.contains('customer__name')) {
+        let content = e.target.value.trim();
+        let regexp = /[а-яА-ЯЁё]/ig;
+
+        this._checkContent(e, content, regexp);
       }
+
+      if (e.target.classList.contains('customer__mail')) {
+        let content = e.target.value.trim();
+        let regexp = /^([!#$%&*-+{}|?/~\w]+(.?[\w]+)*@([\w-]{1,255}\.)[\w-]{2,4})?$/;
+
+        this._checkContent(e, content, regexp);
+      }
+
+      if (e.target.classList.contains('customer__inn')) {
+        let content = e.target.value.trim();
+        let regexp = /[0-9]/ig;
+
+        if (!regexp.test(content)) {
+          e.target.parentNode.querySelector('.customer__error').classList.remove('invisible');
+          e.target.parentNode.querySelector('.customer__info').classList.add('invisible');
+        } else {
+          e.target.parentNode.querySelector('.customer__error').classList.add('invisible');
+          e.target.parentNode.querySelector('.customer__info').classList.remove('invisible');
+        }
+      }
+
+
+
+
+
     });
+
+
+
+
+
 
   }
 

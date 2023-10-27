@@ -113,6 +113,7 @@
   &__svg-info {
     margin-left: 5px;
     align-self: flex-end;
+    cursor: pointer;
   }
 
   &__quantity {
@@ -205,6 +206,7 @@
     line-height: 1rem;
     text-decoration: line-through;
     margin-top: 0.45rem;
+    cursor: pointer;
   }
 
   &__full:after {
@@ -253,7 +255,6 @@
   background-image: url("../assets/icon_checkbox.svg");
   position: relative;
   margin-right: 0.69rem;
-
 }
 
 .checkbox__input-all:checked + .fake-chb::before {
@@ -353,10 +354,12 @@
 
     &__favorite {
       margin: 1px 16px 0 0;
+      cursor: pointer;
     }
 
     &__delete {
       margin: 1px -1px 0 0;
+      cursor: pointer;
     }
   }
 

@@ -1,0 +1,203 @@
+.invoice {
+  background-color: $white;
+  width: 429px;
+  position: absolute;
+  z-index: 15;
+  top: 6.95rem;
+  left: 50%;
+  transform: translate(57.5%, 0);
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px 0 #0000004D;
+  padding: 1.15rem 1.5rem 1.5rem;
+
+  &__total-wrap {
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    justify-content: space-between;
+  }
+
+  &__total {
+    letter-spacing: -0.04em;
+  }
+
+  &__details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0.36rem;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 0.8rem;
+  }
+
+  &__sum {
+    justify-self: end;
+  }
+
+  &__delivery {
+    margin-top: 1.85rem;
+  }
+
+  &__payment-wrap {
+    margin-top: 1.8rem;
+  }
+
+  &__header {
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__edit {
+    width: 20px;
+    height: 20px;
+    background-image: url("../assets/icon_edit.svg");
+  }
+
+  &__dates, &__address {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.15px;
+  }
+
+  &__address {
+    margin-top: 0.4rem;
+  }
+
+  &__dates {
+    color: $pink;
+    line-height: 1.5rem;
+    border-bottom: 1px dashed #CB11AB33;
+  }
+
+  &__return {
+    display: flex;
+    background-color: $lt2-gray;
+    margin-top: 0.6rem;
+    padding: 0.5rem 0 0.7rem 0.5rem;
+    border-radius: 8px;
+  }
+
+  &__confirm {
+    width: 1.5rem;
+    height: 1.4rem;
+    background-image: url("../assets/icon_price_shipping.svg");
+    align-self: center;
+  }
+
+  &__text-wrap {
+    line-height: 1;
+  }
+
+  &__text, &__text_cl {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+  }
+
+  &__text {
+    margin-left: 9px;
+  }
+
+  &__text_cl {
+    margin-left: 9px;
+    color: #0CB477;
+    border-bottom: 1px dashed rgba(12, 180, 119, 0.2);
+  }
+
+  &__payment {
+    display: flex;
+    height: 2rem;
+    align-items: center;
+    column-gap: 9px;
+  }
+
+  &__logo {
+    width: 2rem;
+    height: 1.5rem;
+    border-radius: 4px;
+    background-image: url("../assets/icon_pay.svg");
+  }
+
+  &__card {
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  &__choice {
+    background-color: $lt2-gray;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    padding: 0.6rem 0.5rem 0.7rem 0.5rem;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.3rem;
+  }
+
+  &__payment-txt {
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__fake {
+    width: 22px;
+    height: 22px;
+    background-image: url("../assets/icon_checkbox.svg");
+    position: relative;
+    margin-right: 0.5rem;
+  }
+
+  &__input:checked + &__fake::before {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 22px;
+    background-image: url("../assets/icon_checkbox_ch.svg");
+    position: absolute;
+  }
+  
+  &__btn {
+    width: 100%;
+    color: $white;
+    background-color: $pink;
+    border-radius: 8px;
+    border: none;
+    margin-top: 1.53rem;
+    padding: 0.8rem 0;
+  }
+
+  &__btn:hover {
+    background-color: #ff77e9;
+    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.16);
+  }
+
+  &__rules {
+    display: flex;
+    margin-top: 0.8rem;
+  }
+
+  &__ticking {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url("../assets/icon_ticking.svg");
+    background-repeat: no-repeat;
+
+  }
+
+  &__agreement {
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+//  box-shadow: 0px 2px 10px 0px #00000026;
+
+}

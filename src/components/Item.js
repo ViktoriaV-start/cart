@@ -33,6 +33,10 @@ export class Item {
     return this.productQuantity * this.productPrice;
   }
 
+  getDiscount() {
+    return this.productQuantity * this.productDiscount;
+  }
+
   _getPriceString(num) {
     return new Intl.NumberFormat('ru-RU').format(num);
   }
@@ -51,8 +55,8 @@ export class Item {
     const container = document.querySelector(`${PRODUCT_SELECTOR}[data-id="${this.productId}"]`);
 
     container.querySelector(QUANTITY_SELECTOR).textContent = `${this.productQuantity}`;
-    container.querySelector(TOTAL_SELECTOR).textContent = `${this.totalPrice}`;
-    container.querySelector(FULL_TOTAL_SELECTOR).textContent = `${this.fullTotalPrice}`;
+    container.querySelector(TOTAL_SELECTOR).textContent = `${this._getPriceString(this.totalPrice)}`;
+    container.querySelector(FULL_TOTAL_SELECTOR).textContent = `${this._getPriceString(this.fullTotalPrice)} сом`;
     if(this.productQuantity === 1) {
       container.querySelector('.cart__minus').classList.add('lt-gray');
     } else {

@@ -11,6 +11,7 @@ import {
 } from "@/config/constants";
 import { Item } from "@/components/Item";
 import { Client } from "@/components/Client";
+import {Invoice} from "@/components/Invoice";
 
 export class Cart {
 
@@ -25,6 +26,7 @@ export class Cart {
     this._init();
 
     this.client = new Client(ORDER.client, this.availableProducts, this.unavailableProducts);
+    this.invoice = new Invoice(this.availableProducts, this.client.customer.customer);
 
   }
 
@@ -194,6 +196,7 @@ export class Cart {
           item.changeQuantity(1);
           // this.updateCart();
         }
+        this.invoice.update();
       }
 
       // Уменьшить количество товара в корзине
@@ -205,9 +208,10 @@ export class Cart {
           this.deleteItem(item);
           // this.updateCart();
         }
+        this.invoice.update();
       }
 
-      // Удалить товар
+      // Удалить товар из группы доступных товаров
       if (e.target.classList.contains(DELETE_CLASSNAME)) {
         const id = +e.target.dataset['id'];
         let item = this.getItem(id);
@@ -216,8 +220,10 @@ export class Cart {
 
         let elements = document.querySelectorAll(`.dlv[data-id="${id}"]`);
         elements.forEach(elem => elem.remove());
+        this.invoice.update();
       }
 
+      // Удалить товар из группы недоступных товаров
       if (e.target.classList.contains(DELETE_UNAVAILABLE_CLASSNAME)) {
         const id = +e.target.dataset['id'];
         let item = this.getItemUnavailable(id);
@@ -240,17 +246,24 @@ export class Cart {
           for (let i = 0; i < checkboxes.length; i++) {
             checkboxes[i].checked = true;
           }
-
-          //deliveryDatesContainer.classList.remove('invisible');
           elements.forEach(elem => elem.classList.remove('invisible'));
+          this.availableProducts.forEach(el => {
+            el.confirmed = true;
+          });
+
         } else {
           for (let i = 0; i < checkboxes.length; i++) {
             checkboxes[i].checked = false;
           }
-          //deliveryDatesContainer.classList.add('invisible');
           elements.forEach(elem => elem.classList.add('invisible'));
+          elements.forEach(elem => elem.classList.remove('invisible'));
+          this.availableProducts.forEach(el => {
+            el.confirmed = false;
+          });
         }
+
         this._handleDatesVisibility();
+        this.invoice.update();
       }
 
       // СЛУШАТЕЛЬ СОБЫТИЯ НА ОТДЕЛЬНОМ ЧЕКБОКСЕ - переключает отображение отдельного товара в разделе доставки
@@ -258,15 +271,20 @@ export class Cart {
         const id = +e.target.dataset['id'];
         let elements = document.querySelectorAll(`.dlv[data-id="${id}"]`);
 
+        const item = this.getItem(id);
+
         if (!e.target.checked) {
           document.querySelector('.checkbox__input-all').checked = false;
           elements.forEach(elem => elem.classList.add('invisible'));
+          item.confirmed = false;
 
         } else {
           elements.forEach(elem => elem.classList.remove('invisible'));
+          item.confirmed = true;
         }
 
         this._handleDatesVisibility();
+        this.invoice.update();
       }
     });
   }
