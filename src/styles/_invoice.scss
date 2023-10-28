@@ -78,12 +78,14 @@
     margin-top: 0.6rem;
     padding: 0.5rem 0 0.7rem 0.5rem;
     border-radius: 8px;
+    column-gap: 9px;
   }
 
   &__confirm {
     width: 1.5rem;
     height: 1.4rem;
     background-image: url("../assets/icon_price_shipping.svg");
+    background-repeat: no-repeat;
     align-self: center;
   }
 
@@ -97,12 +99,7 @@
     letter-spacing: 0.1px;
   }
 
-  &__text {
-    margin-left: 9px;
-  }
-
   &__text_cl {
-    margin-left: 9px;
     color: #0CB477;
     border-bottom: 1px dashed rgba(12, 180, 119, 0.2);
   }
@@ -119,6 +116,7 @@
     height: 1.5rem;
     border-radius: 4px;
     background-image: url("../assets/icon_pay.svg");
+    background-repeat: no-repeat;
   }
 
   &__card {
@@ -152,6 +150,7 @@
     width: 22px;
     height: 22px;
     background-image: url("../assets/icon_checkbox.svg");
+    background-repeat: no-repeat;
     position: relative;
     margin-right: 0.5rem;
   }
@@ -162,6 +161,7 @@
     width: 22px;
     height: 22px;
     background-image: url("../assets/icon_checkbox_ch.svg");
+    background-repeat: no-repeat;
     position: absolute;
   }
   
@@ -177,7 +177,12 @@
 
   &__btn:hover {
     background-color: #ff77e9;
-    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.16);
+  }
+
+  &__btn:active {
+    background-color: $pink;
+    //border: 1px solid $pink;
   }
 
   &__rules {
@@ -199,5 +204,82 @@
   }
 
 //  box-shadow: 0px 2px 10px 0px #00000026;
+
+}
+
+@media all and (max-width: 1399.9px) {
+  .invoice {
+    width: 19rem;
+    transform: translate(60.5%, 0);
+
+    &__return {
+      column-gap: 7px;
+    }
+
+    &__confirm {
+      width: 2.5rem;
+    }
+
+    &__text_cl {
+      margin-left: 2px;
+    }
+
+    &__rules {
+      column-gap: 0.56rem;
+    }
+
+    &__agreement {
+      letter-spacing: 0.1px;
+      line-height: 1.2;
+    }
+  }
+}
+
+@media all and (max-width: 1023.9px) {
+  .invoice {
+    position: static;
+    width: 100vw;
+    transform: none;
+    margin-top: -2.5rem;
+    background-color: $lt2-gray;
+    border-radius: 0 0 1.5rem 1.5rem;
+    padding: 2.3rem 1rem 2.5rem;
+
+    &__total-wrap {
+      font-size: 1.25rem;
+    }
+
+    &__total {
+      letter-spacing: 0;
+    }
+
+    &__header, &__address, &__dates, &__payment {
+      display: none;
+    }
+
+    &__return {
+      margin-top: 0;
+      padding-top: 0;
+      column-gap: 3px;
+      padding-right: 4px;
+    }
+
+    &__text-wrap {
+      line-height: 0.9;
+    }
+
+    &__payment-wrap {
+      margin-top: 1.1rem;
+    }
+
+    &__rules {
+      column-gap: 5px;
+    }
+
+
+
+
+  }
+
 
 }
