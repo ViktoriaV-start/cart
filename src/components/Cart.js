@@ -7,7 +7,7 @@ import {
   DELETE_UNAVAILABLE_CLASSNAME,
   ORDER_SELECTOR,
   PRODUCT_SELECTOR,
-  ORDER, ICON_FAVORITE_SELECTOR
+  ORDER, ICON_FAVORITE_SELECTOR, MAIN_SELECTOR
 } from "@/config/constants";
 import { Item } from "@/components/Item";
 import { Client } from "@/components/Client";
@@ -287,6 +287,17 @@ export class Cart {
         this.invoice.update();
       }
     });
+
+    document.querySelector(MAIN_SELECTOR).addEventListener('click', e => {
+
+      if (e.target.classList.contains('edit-dlv')) {
+        document.querySelector('.popup').classList.remove('invisible');
+        document.querySelector('.popup__delivery').classList.remove('invisible');
+      }
+
+    });
+
+
   }
 
 

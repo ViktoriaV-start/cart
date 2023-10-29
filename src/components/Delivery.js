@@ -38,7 +38,7 @@ export class Delivery {
     return `
       <header class="delivery__header">
         <h2 class="delivery__h2">Способ доставки</h2>
-        <span class="delivery__edit">Изменить</span>
+        <span class="delivery__edit edit-dlv">Изменить</span>
       </header>
       
       <main>

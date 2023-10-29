@@ -45,6 +45,7 @@ h1, h2, h3 {
 @import "customer";
 @import "footer";
 @import "invoice";
+@import "popup";
 
 .invisible {
   display: none;
@@ -78,87 +79,5 @@ h1, h2, h3 {
     width: 100vw;
     padding: 0 0.9rem 0 0.9rem;
   }
-}
-
-.popup {
-  width: 100vw;
-  min-height: 100vh;
-  background-color: #05000A4D;
-  position:fixed;
-  top: 0;
-  z-index: 35;
-
-  &__delivery {
-    width: 31.25rem;
-    height: 25.5rem;
-    position: fixed;
-    background-color: $white;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 4px 10px 0 #00000033;
-    border-radius: 1rem;
-    padding: 1.2rem 1.4rem 1.5rem;
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 2px;
-  }
-
-  &__title {
-    font-size: 20px;
-    font-weight: 700;
-    //line-height: 28px;
-    letter-spacing: -0.01em;
-  }
-
-  &__close {
-    width: 1.5rem;
-    height: 1.5rem;
-    background-image: url("../assets/icon_close.svg");
-    background-repeat: no-repeat;
-    }
-
-  &__options {
-    margin-top: 0.8rem;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  &__option {
-    width: 14rem;
-    height: 2.25rem;
-    border-radius: 1.25rem;
-    border: 2px solid #CB11AB26;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    font-size: 0.8rem;
-    font-weight: 700;
-  }
-
-  &__opted {
-    border-color: $pink;
-  }
-
-  &__my-addresses {
-    margin-top: 1.8rem;
-  }
-
-  &__subtitle {
-    font-size: 0.8rem;
-    font-weight: 700;
-  }
-
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr 16fr 1fr;
-  }
-
-
-
 }
 

@@ -102,7 +102,7 @@ export class Invoice {
       if (e.target.classList.contains('invoice__input')) {
         this._installBtnText();
       }
-    })
+    });
   }
 
   _markUp() {
@@ -130,7 +130,7 @@ export class Invoice {
       <section class="invoice__delivery">
         <div class="invoice__header">
           <h3 class="invoice__title">Доставка в пункт выдачи</h3>
-          <div class="invoice__edit"></div>
+          <div class="invoice__edit edit-dlv"></div>
         </div>
         <div class="invoice__address">Бишкек, улица Ахматбека Суюмбаева, 12/1</div>
         <span class="invoice__dates">5-8 фев</span>
@@ -146,7 +146,7 @@ export class Invoice {
       <section class="invoice__payment-wrap">
         <div class="invoice__header">
           <h3 class="invoice__title">Оплата картой</h3>
-          <div class="invoice__edit"></div>
+          <div class="invoice__edit edit-pm"></div>
         </div>
         
         <div class="invoice__payment">
@@ -170,6 +170,8 @@ export class Invoice {
         <div class="invoice__ticking"></div>
         <span class="invoice__agreement">Соглашаюсь с правилами пользования торговой площадкой и возврата</span>
     </div>
+    
+    
 
       
       
