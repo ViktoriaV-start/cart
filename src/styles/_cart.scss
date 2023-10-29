@@ -287,18 +287,6 @@
   top: 37.6px;
 }
 
-//.arrow__top, .arrow__top {
-//  height: 20px;
-//  width: 20px;
-//  background-image: url("../assets/icon_arrow-top.svg");
-//}
-//
-//.arrow__down, .arrow__down {
-//  height: 20px;
-//  width: 20px;
-//  background-image: url("../assets/icon_arrow_down.svg");
-//}
-//
 .fake-arrow {
   height: 20px;
   width: 20px;
@@ -326,7 +314,6 @@
 @media all and (max-width: 1399.9px) {
   .cart {
     width: 40.2rem;
-
 
     &__product {
       grid-template-columns: 16.5% 43% 15.5% 17%;
@@ -568,7 +555,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 90%;
+    width: 4.6rem;
     background-color: #ffffff;
     font-size: 0.9rem;
     border-radius: 6px;

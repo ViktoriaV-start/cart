@@ -19,7 +19,7 @@ export class Payment {
     return `
       <header class="payment__header">
         <h2 class="payment__h2">Способ оплаты</h2>
-        <span class="payment__edit">Изменить</span>        
+        <span class="payment__edit edit-pm">Изменить</span>        
       </header>
       
       <main class="payment__main">
@@ -33,5 +33,4 @@ export class Payment {
       </footer>
     `;
   }
-
 }

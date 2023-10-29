@@ -295,6 +295,11 @@ export class Cart {
         document.querySelector('.popup__delivery').classList.remove('invisible');
       }
 
+      if (e.target.classList.contains('edit-pm')) {
+        document.querySelector('.popup').classList.remove('invisible');
+        document.querySelector('.popup__payment').classList.remove('invisible');
+      }
+
     });
 
 

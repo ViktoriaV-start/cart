@@ -7,7 +7,7 @@
   top: 0;
   z-index: 35;
 
-  &__delivery {
+  &__delivery, &__payment {
     width: 31.25rem;
     position: fixed;
     background-color: $white;
@@ -130,7 +130,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
   }
 
   &__label {
@@ -176,6 +175,82 @@
     align-self: center;
   }
 
+  &__payment {
+    width: 25rem;
+    height: 408px;
+  }
+
+  &__payment-options input[type="radio"] {
+    display: none;
+  }
+
+  &__payment-options {
+    margin-top: 1rem;
+  }
+
+  &__payment-options input[type="radio"]:checked + &__fake::before {
+    content: '';
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: $pink;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__payment-options input[type="radio"]:checked + &__fake::after {
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: $white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__mir, &__visa, &__mastercard, &__maestro {
+    width: 32px;
+    height: 24px;
+    background-image: url("../assets/icon_pay.svg");
+    background-repeat: no-repeat;
+    align-self: center;
+  }
+
+  &__mir {
+    background-image: url("../assets/icon_pay.svg");
+  }
+
+  &__visa {
+    background-image: url("../assets/icon_visa.svg");
+  }
+
+  &__mastercard {
+    background-image: url("../assets/icon_mastercard.svg");
+  }
+
+  &__maestro {
+    background-image: url("../assets/icon_maestro.svg");
+  }
+
+  &__label_mb {
+    margin-bottom: 1rem;
+    column-gap: 6px;
+  }
+
+  &__number {
+    align-self: center;
+  }
+
+  &__btn_mt {
+    margin-top: 7.6rem;
+  }
+
 
 
 
@@ -186,12 +261,13 @@
 
 @media all and (max-width: 500px) {
   .popup {
-    &__delivery {
+    &__delivery, &__payment {
       width: 100vw;
       height: 100vh;
       border-radius: 0;
       padding: 1.2rem 0.9rem 1.5rem;
     }
+
 
     &__option {
       width: 8.7rem;
@@ -209,6 +285,14 @@
     &__fake {
       padding-right: 16px;
     }
+
+    &__btn {
+      position: absolute;
+      bottom: 1rem;
+      width: 90%;
+    }
+
+
 
 
 

@@ -18,9 +18,10 @@ export class Popup {
   _init() {
 
     this.popupContainer.addEventListener('click', e => {
-      if (e.target.classList.contains('popup__close')) {
+      if (e.target.classList.contains('popup__close') || e.target.classList.contains('popup__btn')) {
         document.querySelector('.popup').classList.add('invisible');
         document.querySelector('.popup__delivery').classList.add('invisible');
+        document.querySelector('.popup__payment').classList.add('invisible');
       }
 
       if (e.target.classList.contains('popup__option')) {
@@ -48,7 +49,7 @@ export class Popup {
 
   _markUp() {
     return `
-<div class="popup__delivery invisible">
+      <div class="popup__delivery invisible">
         <header class="popup__header">
           <span class="popup__title">Способ доставки</span>
           <div class="popup__close"></div>
@@ -133,6 +134,56 @@ export class Popup {
         </main>
 
         <button class="popup__btn" type="button">Выбрать</button>
+      </div>
+      
+      
+      <div class="popup__payment invisible">
+        <header class="popup__header">
+          <span class="popup__title">Способ оплаты</span>
+          <div class="popup__close"></div>
+        </header>
+        
+        <div class="popup__payment-options">
+              <label class="popup__label popup__label_mb">
+                <input  type="radio" name="payment-option" value="mir" checked>
+                <div class="popup__fake"></div>
+                <div class="popup__mir"></div>
+                <div class="popup__number">
+                  1234 56•• •••• 1234
+                </div>
+              </label>
+              
+              <label class="popup__label popup__label_mb">
+                <input  type="radio" name="payment-option" value="visa">
+                <div class="popup__fake"></div>
+                <div class="popup__visa"></div>
+                <div class="popup__number">
+                  1234 56•• •••• 1234
+                </div>
+              </label>
+              
+              <label class="popup__label popup__label_mb">
+                <input  type="radio" name="payment-option" value="mastercard">
+                <div class="popup__fake"></div>
+                <div class="popup__mastercard"></div>
+                <div class="popup__number">
+                  1234 56•• •••• 1234
+                </div>
+              </label>
+              
+              <label class="popup__label popup__label_mb">
+                <input  type="radio" name="payment-option" value="maestro">
+                <div class="popup__fake"></div>
+                <div class="popup__maestro"></div>
+                <div class="popup__number">
+                  1234 56•• •••• 1234
+                </div>
+              </label>
+        </div>
+        
+        <button class="popup__btn popup__btn_mt" type="button">Выбрать</button>
+      
+      
       </div>
     `;
   }

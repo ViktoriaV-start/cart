@@ -170,11 +170,6 @@ export class Invoice {
         <div class="invoice__ticking"></div>
         <span class="invoice__agreement">Соглашаюсь с правилами пользования торговой площадкой и возврата</span>
     </div>
-    
-    
-
-      
-      
     `;
 
   }
