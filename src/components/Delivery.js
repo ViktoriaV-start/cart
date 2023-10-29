@@ -69,9 +69,11 @@ export class Delivery {
           <div class="delivery__images" id="7Feb">
             <div class="delivery__img2 dlv" data-id="2"><div class="delivery__quantity">16</div></div>
           </div>
+        </div>
         
-        </div> 
       </main>
+      
+      
       
       <footer class="delivery__footer">
         <div class="delivery__confirm"></div>

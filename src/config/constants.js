@@ -85,13 +85,13 @@ export const ORDER = {
   ]
 }
 
+export const RETINA = window.devicePixelRatio > 1;
 export const HEADER_SELECTOR = '.header';
 export const FOOTER_SELECTOR = '.footer';
 export const INVOICE_SELECTOR = '.invoice';
 export const ORDER_SELECTOR = '.order';
 export const CART_AVAILABLE_SELECTOR = '.cart__available';
 export const CART_UNAVAILABLE_SELECTOR = '.cart__unavailable';
-export const RETINA = window.devicePixelRatio > 1;
 export const PRODUCT_SELECTOR = '.product';
 export const QUANTITY_SELECTOR = '.cart__num';
 export const TOTAL_SELECTOR = '.total';
@@ -104,4 +104,3 @@ export const DELETE_UNAVAILABLE_CLASSNAME = 'delete-unavailable';
 export const DELIVERY_SELECTOR = '.delivery';
 export const PAYMENT_SELECTOR = '.payment';
 export const CUSTOMER_SELECTOR = '.customer';
-

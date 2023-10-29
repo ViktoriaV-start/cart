@@ -1,5 +1,5 @@
 .invoice {
-  background-color: $white;
+  background-color: rgba(255, 255, 255, 1);
   width: 429px;
   position: absolute;
   z-index: 15;
@@ -91,6 +91,30 @@
 
   &__text-wrap {
     line-height: 1;
+    position: relative;
+  }
+
+  &__return-info {
+    position: absolute;
+    top: 2.3rem;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1rem;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 0.6rem 1rem 0.9rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 1px 2px 10px 1px  rgba(0, 0, 0, 0.15);
+    left: -19%;
+    transform: translate(3%, 0%);
+    display: none;
+    //z-index: 25;
+  }
+
+  &__text_cl {
+    cursor: pointer;
+  }
+  &__text_cl:hover + &__return-info{
+    display: block;
   }
 
   &__text, &__text_cl {
@@ -182,7 +206,6 @@
 
   &__btn:active {
     background-color: $pink;
-    //border: 1px solid $pink;
   }
 
   &__rules {
@@ -232,6 +255,11 @@
       letter-spacing: 0.1px;
       line-height: 1.2;
     }
+
+    &__return-info {
+      left: -31%;
+      transform: translate(5%, 0%);
+    }
   }
 }
 
@@ -276,10 +304,12 @@
       column-gap: 5px;
     }
 
-
-
+    &__return-info {
+      left: -19%;
+      transform: translate(2%, 0%);
+    }
 
   }
-
-
 }
+
+

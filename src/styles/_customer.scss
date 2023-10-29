@@ -104,6 +104,11 @@
 
 }
 
+.red {
+  color: $orange-lt;
+  border-color: $orange-lt;
+}
+
 @media all and (max-width: 1399.9px) {
   .customer {
     width: 39.9rem;

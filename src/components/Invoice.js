@@ -1,4 +1,4 @@
-import {INVOICE_SELECTOR} from "@/config/constants";
+import {CUSTOMER_SELECTOR, INVOICE_SELECTOR} from "@/config/constants";
 
 
 export class Invoice {
@@ -50,16 +50,59 @@ export class Invoice {
     this.invoiceContainer.querySelector('.invoice__total-num').textContent = this._getPriceString(this.getTotal());
     this.invoiceContainer.querySelector('.invoice__full-num').textContent = this._getPriceString(this.getFullTotal());
     this.invoiceContainer.querySelector('.invoice__discount').textContent = this._getPriceString(this.getDiscount());
+    this._installBtnText();
   }
 
-
+  _installBtnText() {
+    if (this.invoiceContainer.querySelector('.invoice__input').checked) {
+      this.invoiceContainer.querySelector('.invoice__btn').textContent = `Оплатить ${this._getPriceString(this.getTotal())} сом`;
+    } else {
+      this.invoiceContainer.querySelector('.invoice__btn').textContent = 'Заказать';
+    }
+  }
 
   _render() {
     this.invoiceContainer.insertAdjacentHTML('afterbegin', this._markUp());
   }
 
+  moveToCustomer(field) {
+    field.classList.add('red');
+    field.parentNode.querySelector('.customer__error').classList.remove('hidden');
+    document.querySelector(CUSTOMER_SELECTOR).scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+      inline: 'nearest'
+    });
+  }
+
   _init() {
 
+    this.invoiceContainer.addEventListener('click', e => {
+
+      if (e.target.classList.contains('invoice__btn')) {
+
+        const containers = {
+          name: document.querySelector('input[name="name"]'),
+          surname: document.querySelector('input[name="surname"]'),
+          mail: document.querySelector('input[name="mail"]'),
+          inn: document.querySelector('input[name="inn"]')
+        }
+
+        if (!name || !surname || !mail || !inn) {
+          console.log (111)
+        }
+
+        for (let key in containers) {
+          if (!containers[key].value) {
+            this.moveToCustomer(containers[key]);
+          }
+        }
+      }
+
+      if (e.target.classList.contains('invoice__input')) {
+        this._installBtnText();
+      }
+    })
   }
 
   _markUp() {
@@ -95,6 +138,7 @@ export class Invoice {
           <div class="invoice__confirm"></div>
           <div class="invoice__text-wrap">
             <span class="invoice__text">Обратная доставка товаров на склад при отказе —</span><span class="invoice__text_cl">бесплатно</span>
+            <div class="invoice__return-info">Если товары вам не подойдут, мы вернем иx обратно на склад — это бесплатно</div>
           </div>
         </div>
       </section>
