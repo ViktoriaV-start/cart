@@ -3,14 +3,11 @@
   "version": "1.0.0",
   "description": "WB LO",
   "main": "index.js",
-  "homepage": "https://viktoriav-start.github.io/cart",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "watch": "webpack --mode development --watch",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "watch": "webpack --mode development --watch"
   },
   "author": "Vasilyeva Viktoria <web.brew@yandex.ru>",
   "license": "ISC",
@@ -28,7 +25,6 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "gh-pages": "^6.0.0",
     "normalize.css": "^8.0.1"
   }
 }
