@@ -60,11 +60,14 @@ export class Invoice {
   }
 
   _installBtnText() {
+    let btn = this.invoiceContainer.querySelector('.invoice__btn');
     if (this.invoiceContainer.querySelector('.invoice__input').checked) {
-      this.invoiceContainer.querySelector('.invoice__btn').textContent = `Оплатить ${this._getPriceString(this.getTotal())} сом`;
-      this.invoiceContainer.querySelector('.invoice__post').classList.add('invisible');
+      btn.textContent = `Оплатить ${this._getPriceString(this.getTotal())} сом`;
+      btn.classList.add('invoice__btn_mt');
+            this.invoiceContainer.querySelector('.invoice__post').classList.add('invisible');
     } else {
-      this.invoiceContainer.querySelector('.invoice__btn').textContent = 'Заказать';
+      btn.textContent = 'Заказать';
+      btn.classList.remove('invoice__btn_mt');
       this.invoiceContainer.querySelector('.invoice__post').classList.remove('invisible');
     }
   }

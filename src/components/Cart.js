@@ -232,7 +232,6 @@ export class Cart {
 
       // СЛУШАТЕЛЬ СОБЫТИЯ НА ОБЩЕМ ЧЕКБОКСЕ - переключает отображение товаров в разделе доставки
       if (e.target.classList.contains('checkbox__input-all')) {
-        //let deliveryDatesContainer = document.querySelector('.delivery__dates');
         let elements = document.querySelectorAll(`.dlv`);
         let checkboxes = document.getElementsByClassName('checkbox__input');
 
@@ -250,7 +249,6 @@ export class Cart {
             checkboxes[i].checked = false;
           }
           elements.forEach(elem => elem.classList.add('invisible'));
-          elements.forEach(elem => elem.classList.remove('invisible'));
           this.availableProducts.forEach(el => {
             el.confirmed = false;
           });
