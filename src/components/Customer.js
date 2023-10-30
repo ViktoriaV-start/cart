@@ -9,12 +9,10 @@ export class Customer {
     this.customer = client;
     this._render();
     this._init();
-
   }
 
   _render() {
     this.customerContainer.insertAdjacentHTML('afterbegin', this._markUp());
-
   }
 
   _getMailText() {
@@ -24,6 +22,7 @@ export class Customer {
     return 'Почта';
   }
 
+  // Проверка введенного пользователем текста в input и переключение предупреждения о некорректном вводе
   _checkContent(e, value, regexp) {
     if (!regexp.test(value)) {
       e.target.parentNode.querySelector('.customer__error').classList.remove('hidden');
@@ -59,9 +58,11 @@ export class Customer {
         if (!regexp.test(content)) {
           e.target.parentNode.querySelector('.customer__error').classList.remove('invisible');
           e.target.parentNode.querySelector('.customer__info').classList.add('invisible');
+          e.target.classList.add('red')
         } else {
           e.target.parentNode.querySelector('.customer__error').classList.add('invisible');
           e.target.parentNode.querySelector('.customer__info').classList.remove('invisible');
+          e.target.classList.remove('red');
         }
       }
     });
@@ -79,38 +80,36 @@ export class Customer {
           <div class="customer__fio">
             <div class="customer__name-wrap">
               <div class="customer__title hidden">Имя</div>
-              <input class="customer__name fio" maxlength="45" placeholder="Имя" name="name">
+              <input type="text" class="customer__name fio" maxlength="45" placeholder="Имя" name="name">
               <div class="customer__error hidden">Укажите имя</div>
             </div>
             <div class="customer__surname-wrap">
               <div class="customer__title hidden">Фамилия</div>
-              <input class="customer__name fio" maxlength="45" placeholder="Фамилия" name="surname">
+              <input type="text" class="customer__name fio" maxlength="45" placeholder="Фамилия" name="surname">
               <div class="customer__error hidden">Укажите фамилию</div>
             </div>
           </div>
           
-              <div class="customer__contact">
+          <div class="customer__contact">
             <div class="customer__mail-wrap">
               <div class="customer__title hidden">${this._getMailText()}</div>
-              <input class="customer__mail" maxlength="45" placeholder="${this._getMailText()}" name="mail">
+              <input type="email" class="customer__mail" maxlength="45" placeholder="${this._getMailText()}" name="mail">
               <div class="customer__error hidden">Укажите почту</div>
             </div>
             <div class="customer__phone-wrap">
               <div class="customer__title">Телефон</div>
-              <input class="customer__phone" readonly placeholder="${this.customer.phone}" name="phone">
+              <input type="text" class="customer__phone" readonly placeholder="${this.customer.phone}" name="phone">
               <div class="customer__error hidden">Укажите телефон</div>
             </div>
             <div class="customer__inn-wrap">
               <div class="customer__title hidden">ИНН</div>
-              <input class="customer__inn" maxlength="45" placeholder="ИНН" name="inn">
+              <input type="text" class="customer__inn" maxlength="45" placeholder="ИНН" name="inn">
               <div class="customer__info">Для таможенного оформления</div>
               <div class="customer__error invisible">Укажите ИНН</div>
             </div>
-            
           </div>
         </form>
       </main>
     `;
   }
-
 }

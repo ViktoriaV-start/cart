@@ -12,7 +12,6 @@ export class Payment {
 
   _render() {
     this.paymentContainer.insertAdjacentHTML('afterbegin', this._markUp());
-
   }
 
   _markUp() {

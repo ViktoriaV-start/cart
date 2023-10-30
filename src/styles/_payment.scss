@@ -1,4 +1,3 @@
-
 .payment {
   width: 55.7rem;
   background-color: $white;
@@ -39,10 +38,6 @@
     background-image: url("../assets/icon_pay.svg");
   }
 
-  //&__card, &__expiry, &__logo {
-  //  margin-right: 7px;
-  //}
-
   &__expiry {
     padding-left: 6px;
   }
@@ -69,7 +64,6 @@
   .payment {
     width: 90.5vw;
     position: relative;
-    z-index: 10;
     padding: 1.1rem 0 1.6rem;
     margin-top: 0.6rem;
 

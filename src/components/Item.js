@@ -5,7 +5,6 @@ import Heart from "@/assets/icon_favorite.svg";
 export class Item {
   rendered          = false;
 
-
   constructor(product) {
     this.productId           = product.id;
     this.productTitle        = product.title;
@@ -46,8 +45,6 @@ export class Item {
     this._updateItem();
   }
 
-
-
   _updateItem() {
     this.totalPrice     = this.getTotalPrice();
     this.fullTotalPrice = this.getFullTotalPrice();
@@ -69,10 +66,6 @@ export class Item {
       container.querySelector('.cart__plus').classList.remove('lt-gray');
     }
   }
-
-
-
-
 
     markUp() {
     this.rendered = true;
@@ -107,6 +100,11 @@ export class Item {
                 <circle cx="10" cy="10" r="7.5" stroke="#9797AF"/>
                 <path d="M9.88867 7.58691C9.62826 7.58691 9.41504 7.51042 9.24902 7.35742C9.08301 7.20117 9 7.01074 9 6.78613C9 6.55501 9.08301 6.36621 9.24902 6.21973C9.41504 6.07324 9.62826 6 9.88867 6C10.1523 6 10.3656 6.07324 10.5283 6.21973C10.6943 6.36621 10.7773 6.55501 10.7773 6.78613C10.7773 7.02051 10.6943 7.21257 10.5283 7.3623C10.3656 7.51204 10.1523 7.58691 9.88867 7.58691ZM10.6504 13.3779H9.10742V8.37793H10.6504V13.3779Z" fill="#9797AF"/>
             </svg>
+            <div class="cart__shop-info">
+              <div class="cart__shop-title">OOO «МЕГАПРОФСТИЛЬ»</div>
+              <div class="cart__shop-txt">ОГРН: 5167746237148</div>
+              <div class="cart__shop-txt">129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34</div>
+            </div>
           </div>
           
         </div>
@@ -143,14 +141,30 @@ export class Item {
             <span class="total ${(this.totalPrice > 10000) ? 'cart__total_sm' : 'cart__total'}">${this._getPriceString(this.totalPrice)}</span><span class="cart__total_sm cart__total-text">сом</span>
           </div>
           <span class="cart__full ${(this.fullTotalPrice > 1000000) ? 'cart__full_sm' : ''}">${this._getPriceString(this.fullTotalPrice)} сом</span>
+          <div class="cart__discount">
+          
+            <div class="cart__discount-info">
+              <span class="cart__discount-txt_gr">
+               Скидка 55%
+              </span>
+              <span class="cart__discount-txt">
+                -300 сом
+              </span>
+            </div>
+            
+            <div class="cart__discount-info">
+              <span class="cart__discount-txt_gr">
+               Скидка покупателя 10%
+              </span>
+              <span class="cart__discount-txt">
+                -30 сом
+              </span>
+            </div>
+
+            
+          </div>
         </div>
       </div>
-      
-      
-      
-      
-      
-
     `;
   }
 
@@ -186,16 +200,7 @@ export class Item {
               <path class="delete-unavailable" fill-rule="evenodd" data-id="${this.productId}" clip-rule="evenodd" d="M13 5.5H7V3.46875C7 2.65758 7.65758 2 8.46875 2H11.5312C12.3424 2 13 2.65758 13 3.46875V5.5ZM8.46875 3C8.20987 3 8 3.20987 8 3.46875V4.5H12V3.46875C12 3.20987 11.7901 3 11.5312 3H8.46875Z"/>
             </svg>
           </div>
-      
-
-
-
-      
       </div>
-
     `;
   }
-
-
-
 }

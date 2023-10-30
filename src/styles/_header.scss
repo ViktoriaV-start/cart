@@ -1,5 +1,4 @@
 .header {
-  //height: 7rem;
   padding: 1.19rem 0 2.6rem 0;
 
   &__wrap {
@@ -16,7 +15,7 @@
   }
 
   &__icon-catalog:hover {
-    background-color: #976cc3;
+    background-color: $special-color;
   }
 
   &__logo {
@@ -26,7 +25,7 @@
     font-weight: 700;
     letter-spacing: 1.75px;
     word-spacing: 3px;
-    color: #ffffff;
+    color: $white;
     cursor: pointer;
   }
 
@@ -52,7 +51,7 @@
 
   &__input:focus {
     outline: none;
-    background-color: #ffffff;
+    background-color: $white;
     color: #2f2f2f;
   }
 
@@ -65,15 +64,15 @@
   }
 
   &__search:hover > input {
-    background-color: #ffffff;
+    background-color: $white;
   }
 
   &__search:hover > button {
-    background-color: #ffffff;
+    background-color: $white;
   }
 
   &__input:focus + &__btn {
-    background-color: #ffffff;
+    background-color: $white;
     color: #2f2f2f;
   }
 
@@ -115,8 +114,8 @@
     height: 1rem;
     border-radius: 50%;
     line-height: 1.7;
-    background: #F55123;
-    color: white;
+    background: $orange-lt;
+    color: $white;
     font-size: 0.63rem;
     font-weight: 700;
     text-align: center;
@@ -155,7 +154,6 @@
       background-image: url("../assets/icon_catalog-small.svg");
       height: 1.75rem;
       width: 1.75rem;
-
     }
 
     &__logo {

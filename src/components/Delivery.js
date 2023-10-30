@@ -10,29 +10,11 @@ export class Delivery {
     this.unavailableProducts = unavailableProducts;
 
     this._render();
-
   }
 
   _render() {
     this.deliveryContainer.insertAdjacentHTML('afterbegin', this._markUp());
   }
-
-
-  /**
-  * Это заготовки для рендера товаров на доставке в зависимости от того, какие
-   * товары в корзине, дат доставки и количества.
-  */
-
-  // _render5Feb() {
-  //   let place = document.getElementById('5Feb');
-  //   for (let i = this.availableProducts - 1; i >= 0; i--) {
-  //     place.insertAdjacentHTML('afterbegin', this._markUp5Feb(this.availableProducts[i]));
-  //   }
-  // }
-  //
-  // _markUp5Feb(item) {}
-  //
-  // _render7Feb() {}
 
   _markUp() {
     return `
@@ -73,11 +55,12 @@ export class Delivery {
         
       </main>
       
-      
-      
       <footer class="delivery__footer">
         <div class="delivery__confirm"></div>
-        <span class="delivery__price">Обратная доставка товаров на склад при отказе —</span><span class="delivery__price_cl">бесплатно</span>
+        <div class="delivery__text-wrap">
+          <span class="delivery__price">Обратная доставка товаров на склад при отказе —</span><span class="delivery__price_cl">бесплатно</span>
+          <div class="delivery__return-info">Если товары вам не подойдут, мы вернем иx обратно на склад — это бесплатно</div>
+        </div>
       </footer>
     `;
   }

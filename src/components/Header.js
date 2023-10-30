@@ -6,7 +6,6 @@ export class Header {
 
   constructor() {
     this._render();
-    this._init();
   }
 
   _markUp() {
@@ -25,14 +24,12 @@ export class Header {
           <span class="header__label">Корзина</span>
           <div class="header__quantity">3</div>
         </div>
-        
       </div>
-    
     `;
   }
 
   _render() {
     this.headerContainer.insertAdjacentHTML("afterbegin", this._markUp());
   }
-  _init() {}
+
 }

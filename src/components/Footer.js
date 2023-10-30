@@ -23,5 +23,6 @@ export class Footer {
   _render() {
     this.headerContainer.insertAdjacentHTML("afterbegin", this._markUp());
   }
+
   _init() {}
 }

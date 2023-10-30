@@ -24,7 +24,7 @@
   }
 
   &__available {
-    border-top: 1px solid #dedee1;
+    border-top: 1px solid $lt4-gray;
     margin-top: 1rem;
     padding-top: 12px;
   }
@@ -34,11 +34,10 @@
   }
 
   &__unavailable {
-    border-top: 1px solid #dedee1;
+    border-top: 1px solid $lt4-gray;
     margin-top: 1.2rem;
     padding-top: 12px;
   }
-
 
   &__product {
     display: grid;
@@ -51,7 +50,6 @@
     grid-template-columns: 8% 63% 11% 12%;
     display: grid;
     column-gap: 2%;
-
   }
 
   &__product-unavailable:not(:last-child) {
@@ -95,7 +93,7 @@
   &__stock, &__shop {
     font-weight: 400;
     font-size: 0.8rem;
-    color: #9797AF;
+    color: $gray;
   }
 
   &__stock {
@@ -151,19 +149,19 @@
   }
 
   &__delete, &__favorite path {
-    fill: #000000;
+    fill: $main;
   }
 
   &__delete:hover path {
-    fill: #F55123;
+    fill: $orange-lt;
   }
 
   &__favorite:hover path {
-    fill: #CB11AB;
+    fill: $pink;
   }
 
   &__favorite_colored path {
-    fill: #CB11AB;
+    fill: $pink;
   }
 
   &__quantity-ic, &__ic {
@@ -180,13 +178,12 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    position: relative;
   }
 
   &__total {
-
     font-weight: 700;
     font-size: 1.25rem;
-    //text-align: right;
 
     &_sm {
       font-size: 1rem;
@@ -200,7 +197,7 @@
 
   &__full {
     position: relative;
-    color: #9797AF;
+    color: $gray;
     font-weight: 400;
     font-size: 0.8rem;
     line-height: 1rem;
@@ -212,7 +209,7 @@
   &__full:after {
     content: '';
     display: block;
-    border-bottom: 1px dashed #9797AF;
+    border-bottom: 1px dashed $gray;
     position: absolute;
     left: 0;
     right: 0;
@@ -234,6 +231,66 @@
     display: flex;
     justify-content: space-between;
   }
+
+  &__discount {
+    background-color: $white;
+    position: absolute;
+    border-radius: 0.5rem;
+    padding: 0.7rem 1rem 0 1rem;
+    width: 14.9rem;
+    top: 3rem;
+    right: -0.4rem;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px 0 #00000026;
+    display: none;
+  }
+
+  &__full:hover + &__discount {
+    display: block;
+  }
+
+  &__discount-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+  }
+
+  &__discount-txt, &__discount-txt_gr {
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  &__discount-txt_gr {
+    color: $lt3-gray;
+  }
+
+  &__shop-wrap {
+    position: relative;
+  }
+
+  &__svg-info:hover + &__shop-info {
+    display: block;
+  }
+
+  &__shop-info {
+    top: 1.4rem;
+    background-color: $white;
+    position: absolute;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 10px 0 #00000026;
+    padding: 0.9rem 1rem 0.3rem 1rem;
+   display: none;
+
+  }
+
+  &__shop-title, &__shop-txt {
+    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+
+  &__shop-title {
+    font-weight: 700;
+  }
 }
 
 .checkbox__all {
@@ -253,6 +310,7 @@
   width: 22px;
   height: 22px;
   background-image: url("../assets/icon_checkbox.svg");
+  background-repeat: no-repeat;
   position: relative;
   margin-right: 0.69rem;
 }
@@ -263,6 +321,7 @@
   width: 22px;
   height: 22px;
   background-image: url("../assets/icon_checkbox_ch.svg");
+  background-repeat: no-repeat;
   position: absolute;
 }
 
@@ -272,6 +331,7 @@
   width: 22px;
   height: 22px;
   background-image: url("../assets/icon_checkbox_ch.svg");
+  background-repeat: no-repeat;
   position: absolute;
 }
 
@@ -291,14 +351,17 @@
   height: 20px;
   width: 20px;
   background-image: url("../assets/icon_arrow-top.svg");
+  background-repeat: no-repeat;
 }
 
 .cart__arrow-available:checked + .fake-arrow {
   background-image: url("../assets/icon_arrow_down.svg");
+  background-repeat: no-repeat;
 }
 
 .cart__arrow-unavailable:checked + .fake-arrow {
   background-image: url("../assets/icon_arrow_down.svg");
+  background-repeat: no-repeat;
 }
 
 .point {
@@ -306,7 +369,7 @@
   height: 3px;
   margin: 0 5px 0;
   align-self: center;
-  background-color: #000000;
+  background-color: $main;
   border-radius: 50%;
   margin-top: 3px;
 }
@@ -387,15 +450,14 @@
       grid-template-columns: 28.5% 65.5%;
       column-gap: 1rem;
       margin-bottom: 1.1rem;
-      border-top: 1px solid #dedee1;
+      border-top: 1px solid $lt4-gray;
       padding-top: 12px;
     }
 
     &__product-unavailable {
       grid-template-columns: 28.5% 65.5%;
       column-gap: 1rem;
-      //margin-bottom: 1.1rem;
-      border-top: 1px solid #dedee1;
+      border-top: 1px solid $lt4-gray;
       padding-top: 12px;
       row-gap: 0.6rem;
       padding-bottom: 1.1rem;
@@ -408,7 +470,6 @@
     &__product-unavailable:last-child {
       margin-bottom: 0;
     }
-
 
     &__available, &__unavailable {
       border-top: none;

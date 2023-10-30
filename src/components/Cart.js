@@ -27,7 +27,6 @@ export class Cart {
 
     this.client = new Client(ORDER.client, this.availableProducts, this.unavailableProducts);
     this.invoice = new Invoice(this.availableProducts, this.client.customer.customer);
-
   }
 
   _countUnavailable() {
@@ -82,7 +81,6 @@ export class Cart {
             <input type="checkbox" class="cart__arrow-available">
             <div class="fake-arrow"></div>
           </label>
-<!--          <div class="arrow__available arrow__top"></div>-->
         </div>
         
         <div class="cart__available"></div>
@@ -99,7 +97,6 @@ export class Cart {
             <input type="checkbox" class="cart__arrow-unavailable">
             <div class="fake-arrow"></div>
           </label>
-<!--          <div class="arrow__unavailable arrow__top"></div>-->
           </div>
          
           <div class="cart__unavailable"></div>
@@ -194,7 +191,6 @@ export class Cart {
 
         if (item.productQuantity < item.productInStock) {
           item.changeQuantity(1);
-          // this.updateCart();
         }
         this.invoice.update();
       }
@@ -206,7 +202,6 @@ export class Cart {
 
         if(item.productQuantity > 1) {
           this.deleteItem(item);
-          // this.updateCart();
         }
         this.invoice.update();
       }
@@ -216,7 +211,6 @@ export class Cart {
         const id = +e.target.dataset['id'];
         let item = this.getItem(id);
         this.deleteAll(item);
-        // this.updateCart();
 
         let elements = document.querySelectorAll(`.dlv[data-id="${id}"]`);
         elements.forEach(elem => elem.remove());
@@ -288,6 +282,7 @@ export class Cart {
       }
     });
 
+    // Закрыть popup
     document.querySelector(MAIN_SELECTOR).addEventListener('click', e => {
 
       if (e.target.classList.contains('edit-dlv')) {
@@ -301,9 +296,5 @@ export class Cart {
       }
 
     });
-
-
   }
-
-
 }

@@ -13,10 +13,12 @@ export class Invoice {
     this._init();
   }
 
+  // Перевести число в формат с пробелами
   _getPriceString(num) {
     return new Intl.NumberFormat('ru-RU').format(num);
   }
 
+  // Посчитать количество выбранных товаров в корзине
   getQuantity() {
     let quantity = 0;
     this.products.forEach(el => {
@@ -25,6 +27,7 @@ export class Invoice {
     return quantity;
   }
 
+  // Получить стоимость выбранных товаров в корзине
   getTotal() {
     let total = 0;
     this.products.forEach(el => {
@@ -33,6 +36,7 @@ export class Invoice {
     return total;
   }
 
+  // Получить полную стоимость (без скидки) выбранных товаров в корзине
   getFullTotal() {
     let total = 0;
     this.products.forEach(el => {
@@ -41,10 +45,12 @@ export class Invoice {
     return total;
   }
 
+  // Посчитать общую скидку на товары в корзине
   getDiscount() {
     return this.getFullTotal() - this.getTotal();
   }
 
+  // Обновить invoice - итоговая цена, полная цена, количество товаров, скидка
   update() {
     this.invoiceContainer.querySelector('.invoice__quantity').textContent = this.getQuantity();
     this.invoiceContainer.querySelector('.invoice__total-num').textContent = this._getPriceString(this.getTotal());
@@ -56,8 +62,10 @@ export class Invoice {
   _installBtnText() {
     if (this.invoiceContainer.querySelector('.invoice__input').checked) {
       this.invoiceContainer.querySelector('.invoice__btn').textContent = `Оплатить ${this._getPriceString(this.getTotal())} сом`;
+      this.invoiceContainer.querySelector('.invoice__post').classList.add('invisible');
     } else {
       this.invoiceContainer.querySelector('.invoice__btn').textContent = 'Заказать';
+      this.invoiceContainer.querySelector('.invoice__post').classList.remove('invisible');
     }
   }
 
@@ -160,7 +168,7 @@ export class Invoice {
             <div class="invoice__fake"></div>
             <span class="invoice__payment-txt">Списать оплату сразу</span>
           </label>
-          <span class="invoice__payment-txt">Спишем оплату с карты при получении</span>
+          <span class="invoice__payment-txt invoice__post">Спишем оплату с карты при получении</span>
         </div>
       </section>
       <button class="invoice__btn" type="button">Заказать</button>
@@ -171,6 +179,5 @@ export class Invoice {
         <span class="invoice__agreement">Соглашаюсь с правилами пользования торговой площадкой и возврата</span>
     </div>
     `;
-
   }
 }
