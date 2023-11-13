@@ -39,7 +39,7 @@ export class Customer {
 
       if (e.target.classList.contains('customer__name')) {
         let content = e.target.value.trim();
-        let regexp = /[а-яА-ЯЁё]/ig;
+        let regexp = /^[а-яА-ЯЁё ]+$/ig;
 
         this._checkContent(e, content, regexp);
       }
@@ -53,7 +53,7 @@ export class Customer {
 
       if (e.target.classList.contains('customer__inn')) {
         let content = e.target.value.trim();
-        let regexp = /[0-9]/ig;
+        let regexp = /^[0-9]+$/ig;
 
         if (!regexp.test(content)) {
           e.target.parentNode.querySelector('.customer__error').classList.remove('invisible');
