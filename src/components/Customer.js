@@ -98,7 +98,7 @@ export class Customer {
             </div>
             <div class="customer__phone-wrap">
               <div class="customer__title">Телефон</div>
-              <input type="text" class="customer__phone" readonly placeholder="${this.customer.phone}" name="phone">
+              <input type="text" class="customer__phone" placeholder="${this.customer.phone}" name="phone">
               <div class="customer__error hidden">Укажите телефон</div>
             </div>
             <div class="customer__inn-wrap">

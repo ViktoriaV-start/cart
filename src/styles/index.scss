@@ -9,7 +9,7 @@ $purple: #6725A8;
 $gray: #9797AF;
 $orange: #FF3B30;
 $orange-lt: #F55123;
-$white: #ffffff;
+$white: #FFFFFF;
 $main: #000000;
 $lt-gray: rgba(0, 0, 0, 0.2);
 $pink: #CB11AB;
@@ -64,6 +64,7 @@ h1, h2, h3 {
 
 .lt-gray {
   color: $lt-gray;
+  cursor: default;
 }
 
 @media all and (max-width: 1399.9px) {
@@ -72,9 +73,9 @@ h1, h2, h3 {
   }
 }
 
-@media all and (max-width: 1023.9px) {
+@media screen and (max-width: 1023.9px) {
   .container {
     width: 100vw;
-    padding: 0 0.9rem 0 0.9rem;
+    padding: 0 14px;
   }
 }

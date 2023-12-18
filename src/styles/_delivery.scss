@@ -3,7 +3,7 @@
   background-color: $white;
   border-radius: 1rem;
   padding: 1.2rem 1.5rem 1.4rem;
-  margin-top: 2.1rem;
+  margin-top: 2.25rem;
 
   &__header {
     display: flex;
@@ -17,7 +17,7 @@
   }
 
   &__edit {
-    align-self: flex-end;
+    padding-top: 8px;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
@@ -28,7 +28,7 @@
     display: grid;
     grid-template-columns: 22% 78%;
     margin-top: 1.35rem;
-    row-gap: 1.2rem;
+    row-gap: 20px;
   }
 
   &__dates {
@@ -43,7 +43,7 @@
     font-weight: 600;
 
     &_dt:first-child {
-      padding-top: 5px;
+      padding-top: 4px;
     }
   }
 
@@ -54,9 +54,9 @@
 
   &__hours {
     display: flex;
-    font-size: 0.81rem;
+    font-size: 13px;
     font-weight: 400;
-    margin-top: 7px;
+    margin-top: 6px;
   }
 
   &__star {
@@ -121,10 +121,9 @@
   }
 
   &__price, &__price_cl {
-    font-size: 0.8rem;
+    font-size: 13px;
     font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: 0.1px;
+    line-height: 16px;
   }
 
   &__price {
@@ -166,6 +165,8 @@
 @media all and (max-width: 1399.9px) {
   .delivery {
     width: 39.9rem;
+    margin-top: 37px;
+    padding-bottom: 23px;
 
     &__info {
       grid-template-columns: 31.4% 68.6%;
@@ -175,8 +176,24 @@
 
     &__dates {
       grid-template-columns: 31.4% 78%;
-      margin-top: 1rem;
-      row-gap: 1.35rem;
+      margin-top: 18px;
+      row-gap: 20px;
+    }
+
+    &__hours {
+      margin-top: 7px;
+    }
+
+    &__confirm {
+      margin-top: -1px;
+    }
+
+    &__price {
+      margin-left: 8px;
+    }
+
+    &__price_cl {
+      margin-left: 5px;
     }
 
   }
@@ -188,7 +205,11 @@
     width: 90.5vw;
     position: relative;
     z-index: 10;
-    padding: 1.2rem 0 1.5rem 0;
+    padding: 16px 0 22px 2px;
+
+    &__edit {
+      padding-top: 7px;
+    }
 
     &__bg {
       background-color: #ffffff;
@@ -202,8 +223,10 @@
     }
 
     &__h2 {
-      font-size: 1.25rem;
-      letter-spacing: 0;
+      letter-spacing: -0.01em;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 28px;
     }
 
     &__info {
@@ -213,12 +236,18 @@
       row-gap: 0;
     }
 
+    &__title:not(:first-child) {
+      margin-top: 16px;
+    }
+
     &__address {
-      line-height: 1.6;
+      line-height: 24px;
+      margin-top: 2px;
     }
 
     &__hours {
-      margin-top: 0;
+      margin-top: -1px;
+      margin-left: -2px;
     }
 
     &__star {
@@ -227,7 +256,7 @@
     }
 
     &__title {
-      margin-top: 1rem;
+      margin-top: 12px;
     }
 
     &__free {
@@ -242,11 +271,15 @@
     }
 
     &__images {
-      margin: 0.9rem 0 0 4px;
+      margin: 14px 0 0 1px;
+    }
+
+    &__images:nth-child(4n) .delivery__quantity {
+      top: -5px;
     }
 
     &__title_dt:first-child {
-      padding-top: 5px;
+      padding-top: 10px;
     }
 
     &__title_dt:not(:first-child) {
@@ -255,23 +288,21 @@
 
     &__footer {
       display: inline-block;
-      padding-left: 2.5rem;
-      padding-right: 0.6rem;
+      padding-left: 38px;
+      padding-right: 23px;
       position: relative;
+      margin-top: 24px;
+      line-height: 16px;
     }
 
     &__confirm {
       position: absolute;
-      top: 7px;
-      left: 10px;
+      top: 6px;
+      left: 8px;
     }
 
     &__price {
       line-height: 1;
-      margin-left: 0;
-    }
-
-    &__price_cl {
       margin-left: 0;
     }
 

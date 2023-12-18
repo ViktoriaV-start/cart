@@ -58,7 +58,7 @@ export class Delivery {
       <footer class="delivery__footer">
         <div class="delivery__confirm"></div>
         <div class="delivery__text-wrap">
-          <span class="delivery__price">Обратная доставка товаров на склад при отказе —</span><span class="delivery__price_cl">бесплатно</span>
+          <span class="delivery__price">Обратная доставка товаров на склад при отказе &mdash;</span><span class="delivery__price_cl">бесплатно</span>
           <div class="delivery__return-info">Если товары вам не подойдут, мы вернем иx обратно на склад — это бесплатно</div>
         </div>
       </footer>

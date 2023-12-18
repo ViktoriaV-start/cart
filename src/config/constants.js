@@ -5,7 +5,7 @@ export const ORDER = {
     phone: '+7 988 123-45-67',
     email: 'kostya@gmail.com',
     inn: '1234567890',
-    creditCard: '1234 56•• •••• 1234',
+    creditCard: '1234 12•• •••• 1234',
     address: 'Бишкек, улица Ахматбека Суюмбаева, 12/1'
   },
   available: [

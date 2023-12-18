@@ -124,8 +124,7 @@ export class Invoice {
             Итого
         </div>
         <div class="invoice__total">
-            <span class="invoice__total-num">${this._getPriceString(this.getTotal())}</span>
-            <span>сом</span>
+            <span class="invoice__total-num">${this._getPriceString(this.getTotal())}</span><span class="invoice__total-currency">сом</span>
         </div>
       </header>
       
@@ -133,7 +132,7 @@ export class Invoice {
         <div><span class="invoice__quantity">${this.getQuantity()}</span> товара</div>
         <div class="invoice__sum"><span class="invoice__full-num">${this._getPriceString(this.getFullTotal())}</span> сом</div>
         <div>Скидка</div>
-        <div class="invoice__sum">−<span class="invoice__discount">${this._getPriceString(this.getDiscount())}</span> сом</div>
+        <div class="invoice__sum">&minus;<span class="invoice__discount">${this._getPriceString(this.getDiscount())}</span> сом</div>
         <div>Доставка</div>
         <div class="invoice__sum">Бесплатно</div>
       </section>
@@ -144,12 +143,12 @@ export class Invoice {
           <div class="invoice__edit edit-dlv"></div>
         </div>
         <div class="invoice__address">Бишкек, улица Ахматбека Суюмбаева, 12/1</div>
-        <span class="invoice__dates">5-8 фев</span>
+        <span class="invoice__dates">5&ndash;8 фев</span>
         <div class="invoice__return">
           <div class="invoice__confirm"></div>
           <div class="invoice__text-wrap">
-            <span class="invoice__text">Обратная доставка товаров на склад при отказе —</span><span class="invoice__text_cl">бесплатно</span>
-            <div class="invoice__return-info">Если товары вам не подойдут, мы вернем иx обратно на склад — это бесплатно</div>
+            <span class="invoice__text">Обратная доставка товаров на&nbsp;склад при&nbsp;отказе &mdash;</span><span class="invoice__text_cl">бесплатно</span>
+            <div class="invoice__return-info">Если товары вам не&nbsp;подойдут, мы вернем иx обратно на&nbsp;склад — это бесплатно</div>
           </div>
         </div>
       </section>
@@ -178,8 +177,10 @@ export class Invoice {
     </form>
     
     <div class="invoice__rules">
-        <div class="invoice__ticking"></div>
-        <span class="invoice__agreement">Соглашаюсь с правилами пользования торговой площадкой и возврата</span>
+      <div class="invoice__ticking"></div>
+      <div class="invoice__agreement">
+        Соглашаюсь <span class="invoice__agreement-inderline">с&nbsp;правилами пользования торговой площадкой</span> и&nbsp;<span class="invoice__agreement-inderline">возврата</span>
+      </div>
     </div>
     `;
   }

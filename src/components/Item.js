@@ -114,7 +114,7 @@ export class Item {
             <div class="cart__minus
                         ${this.productQuantity === 1 ? 'lt-gray' : ''}"
                  data-id="${this.productId}">
-                 -
+                 &minus;
             </div>
             <span class="cart__num">${this.productQuantity}</span>
             <div class="cart__plus
@@ -183,7 +183,7 @@ export class Item {
             <span>${this.productTitle}</span>
             <span>${this.productManufacturer}</span>
         </div>
-        <div class="cart__product-info gray ${!this.productColor && !this.productSize ? 'invisible' : ''}">
+        <div class="cart__product-info cart__product-info_gr gray ${!this.productColor && !this.productSize ? 'invisible' : ''}">
           <span>${this.productColor ? 'Цвет: ' + this.productColor : '' }</span>
           <span class="cart__size">${this.productSize ? 'Размер: ' + this.productSize : '' }</span>
         </div>
