@@ -6,8 +6,8 @@ import { Popup } from "@/components/Popup";
 
 
 const header = new Header();
-const cart = new Cart();
 const footer = new Footer();
+const cart = new Cart();
 const popup = new Popup()
 
 let retina = window.devicePixelRatio > 1;

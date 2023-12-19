@@ -22,7 +22,7 @@ export class Header {
         </div>
         <div class="header__cart">
           <span class="header__label">Корзина</span>
-          <div class="header__quantity">3</div>
+          <div class="header__quantity quantity"></div>
         </div>
       </div>
     `;

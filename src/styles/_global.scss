@@ -1,0 +1,31 @@
+
+.invisible {
+  display: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.gray {
+  color: $gray;
+  font-weight: 400;
+}
+
+.lt-gray {
+  color: $lt-gray;
+  cursor: default;
+}
+
+@media screen and (max-width: 1399.9px) {
+  .container {
+    width: 1024px;
+  }
+}
+
+@media screen and (max-width: 1023.9px) {
+  .container {
+    width: 100vw;
+    padding: 0 14px;
+  }
+}

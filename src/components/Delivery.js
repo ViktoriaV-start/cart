@@ -25,7 +25,7 @@ export class Delivery {
       
       <main>
         <div class="delivery__info">
-          <span class="delivery__title">Пункт выдачи</span>
+          <span class="delivery__title delivery__type">Пункт выдачи</span>
           <div class="delivery__address">
             <span>Бишкек, улица Ахматбека Суюмбаева, 12/1</span>
             <div class="delivery__hours">
@@ -41,14 +41,14 @@ export class Delivery {
 
         <div class="delivery__dates">           
           <span class="delivery__title delivery__title_dt">5—6 февраля</span>
-          <div class="delivery__images" id="5Feb">
-            <div class="delivery__img1 dlv" data-id="1"><div class="delivery__quantity"></div></div>
-            <div class="delivery__img2 dlv" data-id="2"><div class="delivery__quantity">184</div></div>
-            <div class="delivery__img3 dlv" data-id="3"><div class="delivery__quantity">2</div></div>
+          <div class="delivery__images" id="feb5">
+            <div class="delivery__img1 dlv" data-id="1"><div class="delivery__quantity" data-id="1"></div></div>
+            <div class="delivery__img2 dlv" data-id="2"><div class="delivery__quantity" data-id="2">184</div></div>
+            <div class="delivery__img3 dlv" data-id="3"><div class="delivery__quantity" data-id="3">2</div></div>
           </div>
             
           <span class="delivery__title delivery__title_dt">7—8 февраля</span>
-          <div class="delivery__images" id="7Feb">
+          <div class="delivery__images" id="feb7">
             <div class="delivery__img2 dlv" data-id="2"><div class="delivery__quantity">16</div></div>
           </div>
         </div>

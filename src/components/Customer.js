@@ -23,49 +23,100 @@ export class Customer {
   }
 
   // Проверка введенного пользователем текста в input и переключение предупреждения о некорректном вводе
-  _checkContent(e, value, regexp) {
+  _checkContent(ev, value, regexp) {
     if (!regexp.test(value)) {
-      e.target.parentNode.querySelector('.customer__error').classList.remove('hidden');
-      e.target.classList.add('red');
+      ev.target.parentNode.querySelector('.customer__error').classList.remove('hidden');
+      ev.target.classList.add('red');
     } else {
-      e.target.parentNode.querySelector('.customer__error').classList.add('hidden');
-      e.target.classList.remove('red');
+      ev.target.parentNode.querySelector('.customer__error').classList.add('hidden');
+      ev.target.classList.remove('red');
     }
+  }
+
+  //Маска для телефона - российский формат, как в макете, для Киргизии нужен другой формат
+  _phoneMask() {
+
+    let setMask = (ev) => {
+
+      let el     = ev.target,
+          matrix = '+7 ___ ___-__-__',
+          i      = 0,
+          def    = matrix.replace(/\D/g, ''),
+          val    = ev.target.value.replace(/\D/g, '');
+
+      if (ev.type === 'blur') {
+        if (val.length < matrix.match(/([\d])/g).length) {
+          ev.target.value = '';
+          return;
+        }
+      }
+
+      if (def.length >= val.length) val = def;
+
+      ev.target.value = matrix.replace(/./g, function (a) {
+        return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? "" : a
+      });
+    }
+
+    let input = document.querySelector('.customer__phone');
+
+    for (let event of ['input', 'blur', 'focus']) {
+      input.addEventListener(event, setMask);
+    }
+
   }
 
   _init() {
 
-    this.customerContainer.addEventListener('change', e => {
+    document.addEventListener("DOMContentLoaded", this._phoneMask);
 
-      if (e.target.classList.contains('customer__name')) {
-        let content = e.target.value.trim();
+    this.customerContainer.addEventListener('change', ev => {
+
+      if (ev.target.classList.contains('customer__name')) {
+        let content = ev.target.value.trim();
         let regexp = /^[а-яА-ЯЁё ]+$/;
 
-        this._checkContent(e, content, regexp);
+        this._checkContent(ev, content, regexp);
       }
 
-      if (e.target.classList.contains('customer__mail')) {
-        let content = e.target.value.trim();
-        let regexp = /^([!#$%&*-+{}|?/~\w]+(.?[\w]+)*@([\w-]{1,255}\.)[\w-]{2,4})?$/;
+      if (ev.target.classList.contains('customer__mail')) {
+        let content = ev.target.value.trim();
+        let regexp = /^([!#$=%&*-+{}|?/~\w]+(\.?[!#$%=&*-+{}|?/~\w]+)*@([\w-]{1,253}\.)[\w-]{2,4})?$/;
 
-        this._checkContent(e, content, regexp);
+        this._checkContent(ev, content, regexp);
       }
 
-      if (e.target.classList.contains('customer__inn')) {
-        let content = e.target.value.trim();
+      if (ev.target.classList.contains('customer__inn')) {
+        let content = ev.target.value.trim();
+        let inn = content.replace(/[ -\.]/g, '');
         let regexp = /^[0-9]+$/;
 
-        if (!regexp.test(content)) {
-          e.target.parentNode.querySelector('.customer__error').classList.remove('invisible');
-          e.target.parentNode.querySelector('.customer__info').classList.add('invisible');
-          e.target.classList.add('red')
+        if (!regexp.test(inn) || inn.length !== 12) {
+          ev.target.parentNode.querySelector('.customer__error').classList.remove('invisible');
+          ev.target.parentNode.querySelector('.customer__info').classList.add('invisible');
+          ev.target.classList.add('red')
         } else {
-          e.target.parentNode.querySelector('.customer__error').classList.add('invisible');
-          e.target.parentNode.querySelector('.customer__info').classList.remove('invisible');
-          e.target.classList.remove('red');
+          ev.target.parentNode.querySelector('.customer__error').classList.add('invisible');
+          ev.target.parentNode.querySelector('.customer__info').classList.remove('invisible');
+          ev.target.classList.remove('red');
         }
       }
     });
+
+    document.querySelector('.customer__phone').addEventListener('blur', (ev) => {
+        if (ev.target.classList.contains('customer__phone')) {
+          let content = ev.target.value.trim();
+          let phone = content.replace(/[\+ -]/g, '');
+
+          if (phone.length !== 11) {
+            ev.target.parentNode.querySelector('.customer__error').classList.remove('hidden');
+            ev.target.classList.add('red');
+          } else {
+            ev.target.parentNode.querySelector('.customer__error').classList.add('hidden');
+            ev.target.classList.remove('red');
+          }
+        }
+    })
   }
 
   _markUp() {

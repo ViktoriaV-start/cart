@@ -14,7 +14,7 @@
   display: none;
 }
 
-@media all and (max-width: 1023.9px) {
+@media screen and (max-width: 1023.9px) {
   .footer {
     padding-top: 1.6rem;
     padding-bottom: 0;
@@ -42,7 +42,7 @@
       border-radius: 50%;
       line-height: 1.7;
       background: #F55123;
-      color: #ffffff;
+      color: $white;
       font-size: 0.63rem;
       font-weight: 700;
       text-align: center;

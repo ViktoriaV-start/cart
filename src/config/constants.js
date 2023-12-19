@@ -106,3 +106,18 @@ export const DELETE_UNAVAILABLE_CLASSNAME = 'delete-unavailable';
 export const DELIVERY_SELECTOR = '.delivery';
 export const PAYMENT_SELECTOR = '.payment';
 export const CUSTOMER_SELECTOR = '.customer';
+export const QUANTITY = '.quantity';
+
+export const ADDRESSES = {
+  tabyshalieva: 'Бишкек, улица Табышалиева, 57',
+  jukeeva: 'Бишкек, улица Жукеева-Пудовкина, 77/1',
+  ahunbaeva: 'Бишкек, микрорайон Джал, улица Ахунбаева Исы, 67/1',
+  default: "Бишкек, улица Ахматбека Суюмбаева, 12/1",
+}
+
+export const CARDS = {
+  mir: "../cards/icon_pay.svg",
+  visa: "../cards/icon_visa.svg",
+  mastercard: "../cards/icon_mastercard.svg",
+  maestro: "../cards/icon_maestro.svg"
+}

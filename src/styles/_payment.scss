@@ -44,6 +44,7 @@
     border-radius: 4px;
     background-image: url("../assets/icon_pay.svg");
     margin-top: -1px;
+    background-repeat: no-repeat;
   }
 
   &__expiry {
@@ -59,10 +60,11 @@
     font-size: 13px;
     font-weight: 400;
     line-height: 16px;
+    color: $gray;
   }
 }
 
-@media all and (max-width: 1399.9px) {
+@media screen and (max-width: 1399.9px) {
   .payment {
     width: 40rem;
 
@@ -81,7 +83,7 @@
 
 }
 
-@media all and (max-width: 1023.9px) {
+@media screen and (max-width: 1023.9px) {
   .payment {
     width: 90.5vw;
     position: relative;
@@ -89,7 +91,7 @@
     margin-top: 12px;
 
     &__bg {
-      background-color: #ffffff;
+      background-color: $white;
       position: absolute;
       width: 100vw;
       left: -0.9rem;

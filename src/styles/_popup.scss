@@ -148,7 +148,8 @@
     color: $white;
     font-size: 1rem;
     font-weight: 700;
-    line-height: 0.8
+    line-height: 0.8;
+    cursor: pointer;
   }
 
   &__btn:hover {
@@ -251,7 +252,7 @@
 }
 
 
-@media all and (max-width: 500px) {
+@media screen and (max-width: 500px) {
   .popup {
     &__delivery, &__payment {
       width: 100vw;

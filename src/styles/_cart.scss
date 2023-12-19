@@ -165,7 +165,7 @@
   }
 
   &__delete, &__favorite path {
-    fill: $main;
+    fill: $black;
   }
 
   &__delete:hover path {
@@ -396,7 +396,7 @@
   height: 3px;
   margin: 0 5px 0;
   align-self: center;
-  background-color: $main;
+  background-color: $black;
   border-radius: 50%;
   margin-top: 3px;
 }

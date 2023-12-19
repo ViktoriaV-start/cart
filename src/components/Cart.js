@@ -7,7 +7,10 @@ import {
   DELETE_UNAVAILABLE_CLASSNAME,
   ORDER_SELECTOR,
   PRODUCT_SELECTOR,
-  ORDER, ICON_FAVORITE_SELECTOR, MAIN_SELECTOR
+  ORDER,
+  ICON_FAVORITE_SELECTOR,
+  MAIN_SELECTOR,
+  QUANTITY
 } from "@/config/constants";
 import { Item } from "@/components/Item";
 import { Client } from "@/components/Client";
@@ -22,15 +25,74 @@ export class Cart {
   constructor() {
     this.handleData(ORDER.available, this.availableProducts);
     this.handleData(ORDER.unavailable, this.unavailableProducts);
+    this._setCounter();
     this._render();
     this._init();
 
     this.client = new Client(ORDER.client, this.availableProducts, this.unavailableProducts);
     this.invoice = new Invoice(this.availableProducts, this.client.customer.customer);
+
   }
 
   _countUnavailable() {
     return this.unavailableProducts.length;
+  }
+
+  _countAvailable() {
+    return this.availableProducts.length;
+  }
+
+  _setCounter() {
+    document.querySelectorAll(QUANTITY).forEach(el => {
+      let counter = this._countAvailable();
+      if (counter) {
+        el.textContent = this._countAvailable();
+      } else {
+        el.textContent = '';
+      }
+    });
+  }
+
+  // Посчитать количество товаров в корзине
+  getQuantity() {
+    let quantity = 0;
+    this.availableProducts.forEach(el => {
+      quantity += el.productQuantity;
+    });
+    return quantity;
+  }
+
+  // Посчитать стоимость товаров в корзине
+  getSum() {
+    let sum = 0;
+    this.availableProducts.forEach(el => {
+      sum += el.totalPrice;
+    });
+    return sum;
+  }
+
+  _setBrieflyInfo() {
+    let brieflyQuantityCont = document.querySelector('.cart__briefly-quantity');
+    let brieflySumCont = document.querySelector('.cart__briefly-sum');
+
+    let quantity = this.getQuantity();
+
+    if (!quantity) {
+      this._addClass('.cart__control', 'invisible');
+    } else {
+      brieflyQuantityCont.textContent = quantity + ' ' + this.invoice.getCaption(quantity);
+      brieflySumCont.textContent = this.invoice.getPriceString(this.getSum()) + ' сом';
+    }
+  }
+
+  _setUnavailableInfo() {
+    let unavailableQuantityCont = document.querySelector('.cart__unavailable-quantity');
+    let quantity = this.unavailableProducts.length;
+    if (!quantity) {
+      this._addClass('.cart__unavailable-wrap', 'invisible');
+    } else {
+      unavailableQuantityCont.textContent = quantity + ' ' + this.invoice.getCaption(quantity);
+    }
   }
 
   _render() {
@@ -72,9 +134,9 @@ export class Cart {
           </label>
 
           <div class="cart__briefly invisible">
-            <span>266 товаров</span>
+            <span class="cart__briefly-quantity">203 товаров</span>
             <div class="point"></div>
-            <span>2 100 269 сом</span>
+            <span class="cart__briefly-sum">2 101 016 сом</span>
           </div>
           
           <label class="arrow__available">
@@ -90,7 +152,7 @@ export class Cart {
           <div class="cart__unavailable-heading">
             <span>Отсутствуют</span>
             <div class="point"></div>
-            <span>${this._countUnavailable()} товара</span>
+            <span class="cart__unavailable-quantity">${this._countUnavailable()} товара</span>
           </div>
           
           <label class="arrow__unavailable">
@@ -166,21 +228,56 @@ export class Cart {
     document.querySelector(`${PRODUCT_SELECTOR}[data-id="${id}"]`).remove();
   }
 
-  // Установить слушателей событий и определить действия
+  _setDeliveryCounter(id, action) {
+    let deliveryCont = document.querySelector('#feb5');
+    let quantityCont = deliveryCont.querySelector(`.delivery__quantity[data-id="${id}"]`);
+    let currentQuantity = (+quantityCont.textContent === 0) ? 1 : +quantityCont.textContent;
+
+    if (action === 'add') {
+      quantityCont.textContent = currentQuantity + 1;
+    }
+
+    if (action === 'delete') {
+      if (currentQuantity === 2) {
+        quantityCont.textContent = '';
+      } else {
+        quantityCont.textContent = currentQuantity - 1;
+      }
+    }
+  }
+
+  _addClass(selector, className) {
+    document.querySelector(selector).classList.add(className);
+  }
+
+  _removeClass(selector, className) {
+    document.querySelector(selector).classList.remove(className);
+  }
+
+  _toggleInvisible(selector) {
+    this.orderContainer.querySelector(selector).classList.toggle('invisible');
+  }
+
+  _removeDeliveryDates() {
+    this._addClass('.delivery__dates', 'invisible');
+  }
+
+
+  // Установить слушателей событий и определить действия ---------------------------------------------
   _init() {
     this.orderContainer.addEventListener('click', e => {
 
       // Открытие/скрытие корзины доступных товаров
       if (e.target.classList.contains('cart__arrow-available')) {
-        this.orderContainer.querySelector(CART_AVAILABLE_SELECTOR).classList.toggle('invisible');
-        this.orderContainer.querySelector('.cart__briefly').classList.toggle('invisible');
-        this.orderContainer.querySelector('.fake__all').classList.toggle('invisible');
-        this.orderContainer.querySelector('.checkbox__text').classList.toggle('invisible');
+        this._toggleInvisible(CART_AVAILABLE_SELECTOR);
+        this._toggleInvisible('.cart__briefly');
+        this._toggleInvisible('.fake__all');
+        this._toggleInvisible('.checkbox__text');
       }
 
       // Открытие/скрытие корзины недоступных товаров
       if (e.target.classList.contains('cart__arrow-unavailable')) {
-        this.orderContainer.querySelector(CART_UNAVAILABLE_SELECTOR).classList.toggle('invisible');
+        this._toggleInvisible(CART_UNAVAILABLE_SELECTOR);
       }
 
       // Увеличить количество товара в корзине
@@ -192,7 +289,10 @@ export class Cart {
         if (item.productQuantity < item.productInStock) {
           item.changeQuantity(1);
         }
+        this._setCounter();
+        this._setDeliveryCounter(id, 'add');
         this.invoice.update();
+        this._setBrieflyInfo();
       }
 
       // Уменьшить количество товара в корзине
@@ -203,7 +303,10 @@ export class Cart {
         if(item.productQuantity > 1) {
           this.deleteItem(item);
         }
+        this._setCounter();
+        this._setDeliveryCounter(id, 'delete')
         this.invoice.update();
+        this._setBrieflyInfo();
       }
 
       // Удалить товар из группы доступных товаров
@@ -214,7 +317,12 @@ export class Cart {
 
         let elements = document.querySelectorAll(`.dlv[data-id="${id}"]`);
         elements.forEach(elem => elem.remove());
+        this._setCounter();
         this.invoice.update();
+        if (!this.availableProducts.length) {
+          this._removeDeliveryDates();
+        }
+        this._setBrieflyInfo();
       }
 
       // Удалить товар из группы недоступных товаров
@@ -222,6 +330,7 @@ export class Cart {
         const id = +e.target.dataset['id'];
         let item = this.getItemUnavailable(id);
         this.deleteUnavailable(item);
+        this._setUnavailableInfo();
       }
 
 //---------------

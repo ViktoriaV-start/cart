@@ -106,7 +106,7 @@
     font-weight: 600;
     line-height: 16px;
     text-align: center;
-    color: #ffffff;
+    color: $white;
   }
 
   &__footer {
@@ -162,7 +162,7 @@
 
 }
 
-@media all and (max-width: 1399.9px) {
+@media screen and (max-width: 1399.9px) {
   .delivery {
     width: 39.9rem;
     margin-top: 37px;
@@ -199,7 +199,7 @@
   }
 }
 
-@media all and (max-width: 1023.9px) {
+@media screen and (max-width: 1023.9px) {
   .delivery {
     margin-top: 1rem;
     width: 90.5vw;
@@ -212,7 +212,7 @@
     }
 
     &__bg {
-      background-color: #ffffff;
+      background-color: $white;
       position: absolute;
       width: 100vw;
       left: -0.9rem;

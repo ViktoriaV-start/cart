@@ -14,7 +14,7 @@ export class Invoice {
   }
 
   // Перевести число в формат с пробелами
-  _getPriceString(num) {
+  getPriceString(num) {
     return new Intl.NumberFormat('ru-RU').format(num);
   }
 
@@ -53,16 +53,17 @@ export class Invoice {
   // Обновить invoice - итоговая цена, полная цена, количество товаров, скидка
   update() {
     this.invoiceContainer.querySelector('.invoice__quantity').textContent = this.getQuantity();
-    this.invoiceContainer.querySelector('.invoice__total-num').textContent = this._getPriceString(this.getTotal());
-    this.invoiceContainer.querySelector('.invoice__full-num').textContent = this._getPriceString(this.getFullTotal());
-    this.invoiceContainer.querySelector('.invoice__discount').textContent = this._getPriceString(this.getDiscount());
+    this.invoiceContainer.querySelector('.invoice__quantity-caption').textContent = this.getCaption(this.getQuantity());
+    this.invoiceContainer.querySelector('.invoice__total-num').textContent = this.getPriceString(this.getTotal());
+    this.invoiceContainer.querySelector('.invoice__full-num').textContent = this.getPriceString(this.getFullTotal());
+    this.invoiceContainer.querySelector('.invoice__discount').textContent = this.getPriceString(this.getDiscount());
     this._installBtnText();
   }
 
   _installBtnText() {
     let btn = this.invoiceContainer.querySelector('.invoice__btn');
     if (this.invoiceContainer.querySelector('.invoice__input').checked) {
-      btn.textContent = `Оплатить ${this._getPriceString(this.getTotal())} сом`;
+      btn.textContent = `Оплатить ${this.getPriceString(this.getTotal())} сом`;
       btn.classList.add('invoice__btn_mt');
             this.invoiceContainer.querySelector('.invoice__post').classList.add('invisible');
     } else {
@@ -86,6 +87,29 @@ export class Invoice {
     });
   }
 
+  getCaption(num) {
+    let words = ['товар', 'товара', 'товаров'];
+
+    switch (num % 10) {
+
+      case 1:
+        if (Math.floor((num % 100)/10) !== 1) return words[0];
+        return words[2];
+
+      case 2:
+      case 3:
+      case 4:
+        if (Math.floor((num % 100)/10) !== 1) {
+          return  words[1];
+        } else {
+          return  words[2];
+        }
+
+      default:
+        return words[2];
+    }
+  }
+
   _init() {
 
     this.invoiceContainer.addEventListener('click', e => {
@@ -96,11 +120,12 @@ export class Invoice {
           name: document.querySelector('input[name="name"]'),
           surname: document.querySelector('input[name="surname"]'),
           mail: document.querySelector('input[name="mail"]'),
-          inn: document.querySelector('input[name="inn"]')
+          inn: document.querySelector('input[name="inn"]'),
+          phone: document.querySelector('input[name="phone"]')
         }
 
-        if (!name || !surname || !mail || !inn) {
-          console.log (111)
+        if (containers.phone.value.length !== 16) {
+          this.moveToCustomer(containers.phone);
         }
 
         for (let key in containers) {
@@ -124,15 +149,15 @@ export class Invoice {
             Итого
         </div>
         <div class="invoice__total">
-            <span class="invoice__total-num">${this._getPriceString(this.getTotal())}</span><span class="invoice__total-currency">сом</span>
+            <span class="invoice__total-num">${this.getPriceString(this.getTotal())}</span><span class="invoice__total-currency">сом</span>
         </div>
       </header>
       
       <section class="invoice__details">
-        <div><span class="invoice__quantity">${this.getQuantity()}</span> товара</div>
-        <div class="invoice__sum"><span class="invoice__full-num">${this._getPriceString(this.getFullTotal())}</span> сом</div>
+        <div><span class="invoice__quantity">${this.getQuantity()}</span> <span class="invoice__quantity-caption">товара</span></div>
+        <div class="invoice__sum"><span class="invoice__full-num">${this.getPriceString(this.getFullTotal())}</span> сом</div>
         <div>Скидка</div>
-        <div class="invoice__sum">&minus;<span class="invoice__discount">${this._getPriceString(this.getDiscount())}</span> сом</div>
+        <div class="invoice__sum">&minus;<span class="invoice__discount">${this.getPriceString(this.getDiscount())}</span> сом</div>
         <div>Доставка</div>
         <div class="invoice__sum">Бесплатно</div>
       </section>

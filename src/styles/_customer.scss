@@ -82,7 +82,7 @@
   }
 
   &__phone::placeholder {
-    color: $main;
+    color: $black;
   }
 
   &__name-wrap:focus-within &__title {
@@ -112,7 +112,7 @@
   border-color: $orange-lt;
 }
 
-@media all and (max-width: 1399.9px) {
+@media screen and (max-width: 1399.9px) {
   .customer {
     width: 39.9rem;
 
@@ -142,7 +142,7 @@
   }
 }
 
-@media all and (max-width: 1023.9px) {
+@media screen and (max-width: 1023.9px) {
   .customer {
     width: 90.5vw;
     position: relative;
@@ -151,7 +151,7 @@
     margin-top: 12px;
 
     &__bg {
-      background-color: #ffffff;
+      background-color: $white;
       position: absolute;
       width: 100vw;
       left: -0.9rem;
