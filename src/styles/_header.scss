@@ -8,8 +8,9 @@
 
   &__icon-catalog {
     background-image: url("../assets/icon_catalog.svg");
+    background-repeat: no-repeat;
     height: 3rem;
-    width: 3rem;
+    width: 3.1rem;
     cursor: pointer;
     border-radius: 5px;
   }
