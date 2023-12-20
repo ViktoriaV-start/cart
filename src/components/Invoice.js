@@ -121,11 +121,13 @@ export class Invoice {
           surname: document.querySelector('input[name="surname"]'),
           mail: document.querySelector('input[name="mail"]'),
           inn: document.querySelector('input[name="inn"]'),
-          phone: document.querySelector('input[name="phone"]')
+
         }
 
-        if (containers.phone.value.length !== 16) {
-          this.moveToCustomer(containers.phone);
+        let phoneCont = document.querySelector('input[name="phone"]');
+        let phone = phoneCont.value;
+        if (phone && phone.length !== 16) {
+          this.moveToCustomer(phoneCont);
         }
 
         for (let key in containers) {
@@ -143,7 +145,7 @@ export class Invoice {
 
   _markUp() {
     return `
-    <form action="#">
+    <form action="#" class="invoice__form">
       <header class="invoice__total-wrap">
         <div>
             Итого

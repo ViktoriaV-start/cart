@@ -121,3 +121,10 @@ export const CARDS = {
   mastercard: "../cards/icon_mastercard.svg",
   maestro: "../cards/icon_maestro.svg"
 }
+
+export const CARDS_NUMBER = {
+  mir: "1234 12•• •••• 1234",
+  visa: "1234 78•• •••• 1234",
+  mastercard: "1234 98•• •••• 7534",
+  maestro: "1234 96•• •••• 6531"
+}

@@ -330,7 +330,7 @@
     &__return {
       margin-top: 0;
       column-gap: 7px;
-      padding: 10px 8px 10px 8px;
+      padding: 10px 8px;
       background: #F0ECF4;
       border-radius: 8px;
     }
@@ -377,5 +377,17 @@
     &__btn {
       margin-top: 24px;
     }
+  }
+}
+
+@media screen and (min-width: 520px) and (max-width: 1023.9px) {
+  .invoice__form {
+    width: 76vw;
+    margin: 0 auto;
+  }
+
+  .invoice__rules {
+    width: 76vw;
+    margin: 12px auto 0;
   }
 }

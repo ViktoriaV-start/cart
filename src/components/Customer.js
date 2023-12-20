@@ -33,16 +33,12 @@ export class Customer {
     }
   }
 
-  //Маска для телефона - российский формат, как в макете, для Киргизии нужен другой формат
-  _phoneMask() {
-
-    let setMask = (ev) => {
-
+  _phoneMask(ev) {
       let el     = ev.target,
-          matrix = '+7 ___ ___-__-__',
-          i      = 0,
-          def    = matrix.replace(/\D/g, ''),
-          val    = ev.target.value.replace(/\D/g, '');
+        matrix = '+7 ___ ___-__-__',
+        i      = 0,
+        def    = matrix.replace(/\D/g, ''),
+        val    = ev.target.value.replace(/\D/g, '');
 
       if (ev.type === 'blur') {
         if (val.length < matrix.match(/([\d])/g).length) {
@@ -56,19 +52,10 @@ export class Customer {
       ev.target.value = matrix.replace(/./g, function (a) {
         return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? "" : a
       });
-    }
-
-    let input = document.querySelector('.customer__phone');
-
-    for (let event of ['input', 'blur', 'focus']) {
-      input.addEventListener(event, setMask);
-    }
 
   }
 
   _init() {
-
-    document.addEventListener("DOMContentLoaded", this._phoneMask);
 
     this.customerContainer.addEventListener('change', ev => {
 
@@ -103,7 +90,13 @@ export class Customer {
       }
     });
 
-    document.querySelector('.customer__phone').addEventListener('blur', (ev) => {
+    let phoneCont = document.querySelector('.customer__phone');
+
+      for (let event of ['input', 'focus']) {
+        phoneCont.addEventListener(event, this._phoneMask);
+      }
+
+    phoneCont.addEventListener('blur', (ev) => {
         if (ev.target.classList.contains('customer__phone')) {
           let content = ev.target.value.trim();
           let phone = content.replace(/[\+ -]/g, '');

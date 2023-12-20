@@ -720,7 +720,7 @@
     position: absolute;
     bottom: 8px;
     left: 4px;
-    padding: 2px 2px 2px 2px
+    padding: 2px;
   }
 }
 
@@ -736,5 +736,12 @@
 
   .arrow__unavailable {
     margin: 1px 0;
+  }
+}
+
+@media screen and (min-width: 520px) and (max-width: 1023.9px) {
+  .cart {
+    width: 76vw;
+    margin: 0 auto;
   }
 }

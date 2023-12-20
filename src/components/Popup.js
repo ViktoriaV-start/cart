@@ -1,4 +1,4 @@
-import { ADDRESSES, POPUP_SELECTOR, CARDS } from "@/config/constants";
+import {ADDRESSES, POPUP_SELECTOR, CARDS, CARDS_NUMBER} from "@/config/constants";
 
 
 export class Popup {
@@ -48,18 +48,24 @@ export class Popup {
   // Установить выбранную карту в инвойс и часть про оплату
   _setPaymentCard() {
     let invoiceCardContainer = document.querySelector('.invoice__logo');
+    let invoiceCardNumberContainer = document.querySelector('.invoice__card');
+    let paymentCardNumberContainer = document.querySelector('.payment__card');
     let paymentCardContainer = document.querySelector('.payment__logo');
     let options = document.querySelectorAll('.popup__payment input[type="radio"]');
     let card = '';
+    let cardNumber = '';
 
     options.forEach(el => {
       if (el.checked) {
         card = el.value;
+        cardNumber = CARDS_NUMBER[card];
       }
     });
 
     invoiceCardContainer.style.background = `url(${CARDS[card]})`;
     paymentCardContainer.style.background = `url(${CARDS[card]})`;
+    invoiceCardNumberContainer.textContent = cardNumber;
+    paymentCardNumberContainer.textContent = cardNumber;
   }
 
   _init() {
@@ -90,11 +96,15 @@ export class Popup {
         }
       }
 
-      // Закрытие popup доставка
-      if (classList.contains('popup__close') || classList.contains('popup__btn')) {
+      // Закрытие popup доставка БЕЗ СОХРАНЕНИЯ
+      if (classList.contains('popup__close')) {
+        this._closePopup('.popup__delivery');
+      }
 
-        this._addClass('.popup', 'invisible');
-        this._addClass('.popup__delivery', 'invisible');
+      // ЗАКРЫТЬ И СОХРАНИТЬ popup доставка
+      if (classList.contains('popup__btn')) {
+
+        this._closePopup('.popup__delivery');
 
         let deliveryType = deliveryCont.querySelector('.popup__opted').getAttribute('data-name');
         this._setDeliveryText(deliveryType);
@@ -113,13 +123,23 @@ export class Popup {
     paymentCont.addEventListener('click', e => {
       let classList = e.target.classList;
 
-      if (classList.contains('popup__close') || classList.contains('popup__btn')) {
-        this._addClass('.popup', 'invisible');
-        this._addClass('.popup__payment', 'invisible');
+      // КНОПКА ЗАКРЫТЬ БЕЗ СОХРАНЕНИЯ
+      if (classList.contains('popup__close')) {
+        this._closePopup('.popup__payment');
+      }
+
+      //КНОПКА ВЫБРАТЬ (СОХРАНИТЬ И ЗАКРЫТЬ)
+      if (classList.contains('popup__btn')) {
+        this._closePopup('.popup__payment');
         this._setPaymentCard();
       }
     });
 
+  }
+
+  _closePopup(selector) {
+    this._addClass('.popup', 'invisible');
+    this._addClass(selector, 'invisible');
   }
 
   _addClass(selector, className) {
@@ -228,7 +248,7 @@ export class Popup {
             <div class="popup__fake"></div>
             <div class="popup__mir"></div>
             <div class="popup__number">
-              1234 56•• •••• 1234
+              ${CARDS_NUMBER.mir}
             </div>
           </label>
               
@@ -237,7 +257,7 @@ export class Popup {
             <div class="popup__fake"></div>
             <div class="popup__visa"></div>
             <div class="popup__number">
-              1234 56•• •••• 1234
+              ${CARDS_NUMBER.visa}
             </div>
           </label>
               
@@ -246,7 +266,7 @@ export class Popup {
             <div class="popup__fake"></div>
             <div class="popup__mastercard"></div>
             <div class="popup__number">
-              1234 56•• •••• 1234
+              ${CARDS_NUMBER.mastercard}
             </div>
           </label>
               
@@ -255,7 +275,7 @@ export class Popup {
             <div class="popup__fake"></div>
             <div class="popup__maestro"></div>
             <div class="popup__number">
-              1234 56•• •••• 1234
+              ${CARDS_NUMBER.maestro}
             </div>
           </label>
         </div>

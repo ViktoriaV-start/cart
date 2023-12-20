@@ -6,7 +6,23 @@
   <title>WB - Cart</title>
 </head>
 <body>
-  <header class="header"></header>
+  <header class="header">
+    <div class="container header__wrap">
+      <div class="header__icon-catalog"></div>
+      <div class="header__logo">ТОВАРЫ И ТОЧКА</div>
+      <div class="header__search">
+        <input type="text" name="search" placeholder="Я ищу..." class="header__input">
+        <button class="header__btn"></button>
+      </div>
+      <div class="header__profile">
+        <span class="header__label">Профиль</span>
+      </div>
+      <div class="header__cart">
+        <span class="header__label">Корзина</span>
+        <div class="header__quantity quantity"></div>
+      </div>
+    </div>
+  </header>
   <main class="main">
     <div class="order container"></div>
     <aside class="invoice"></aside>
