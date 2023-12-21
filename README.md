@@ -1,5 +1,6 @@
 # Раздел - Корзина
 https://viktoriav-start.github.io/cart/
+
 https://vi-web.ru/
 
 1. Товары подгружаются со всеми данными и рендерятся на странице;
