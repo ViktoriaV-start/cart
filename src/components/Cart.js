@@ -286,6 +286,8 @@ export class Cart {
         const id = +e.target.dataset['id'];
         let item = this.getItem(id);
 
+        if (item.productQuantity === item.productInStock) return;
+
         if (item.productQuantity < item.productInStock) {
           item.changeQuantity(1);
         }
@@ -299,6 +301,8 @@ export class Cart {
       if (e.target.classList.contains(DELETE_ONE_CLASSNAME)) {
         const id = +e.target.dataset['id'];
         let item = this.getItem(id);
+
+        if (item.productQuantity === 1) return;
 
         if(item.productQuantity > 1) {
           this.deleteItem(item);

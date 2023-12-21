@@ -68,7 +68,7 @@ export class Customer {
 
       if (ev.target.classList.contains('customer__mail')) {
         let content = ev.target.value.trim();
-        let regexp = /^([!#$=%&*-+{}|?/~\w]+(\.?[!#$%=&*-+{}|?/~\w]+)*@([\w-]{1,253}\.)[\w-]{2,4})?$/;
+        let regexp = /^([!#$=%&*+{}|?/~a-zA-Z0-9]+(\.?[!#$%=&*\-+{}|?/~\w]+)*@([\w-]{1,253}\.)[\w-]{2,4})?$/;
 
         this._checkContent(ev, content, regexp);
       }

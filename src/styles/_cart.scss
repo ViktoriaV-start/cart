@@ -165,15 +165,16 @@
   }
 
   &__delete, &__favorite path {
-    fill: $black;
+    color: $black;
+    fill: currentColor;
   }
 
   &__delete:hover path {
-    fill: $orange-lt;
+    color: $orange-lt;
   }
 
   &__favorite:hover path {
-    fill: $pink;
+    color: $pink;
   }
 
   &__favorite_colored path {
